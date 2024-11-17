@@ -1,5 +1,8 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+migrations
+__init__.py
+*.sqlite3
 *.py[cod]
 *$py.class
 
