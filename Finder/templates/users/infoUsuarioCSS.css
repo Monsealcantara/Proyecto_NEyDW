@@ -1,0 +1,121 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #003333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.barra-busqueda {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.barra-busqueda input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.barra-busqueda button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+/* Estilos de perfil */
+.perfil {
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.icono-inicio {
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.foto-nombre {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.foto-perfil {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+.informacion h1, .informacion p {
+    margin: 5px 0;
+}
+
+.informacion input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.boton-contratar {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.boton-contratar button {
+    background-color: #003333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.acerca textarea {
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.galeria {
+    margin-top: 20px;
+}
+
+.galeria .imagenes {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.imagen-placeholder {
+    width: 30%;
+    height: 100px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
