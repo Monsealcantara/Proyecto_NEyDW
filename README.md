@@ -1,4 +1,4 @@
-Comando de secuencia para la instalacion
+Comandos de secuencia para la instalación
 
 Crear entorno virtual
 
@@ -6,13 +6,19 @@ Crear entorno virtual
     
 Activamos entorno virtual
 
+En Linux:
+
     source env/bin/activate
+    
+En Windows:
+
+    env\Scripts\activate
 
 Instalamos librerias
 
     pip install -r requirements.amb
 
-Configurar archivo .env
+Configurar archivo .env (crear un archivo '.env' en la misma carpeta del "manage.py")
 
     FINDER_SECRET_KEY='django-insecure-mmiuzz_p+*l@rng*j!1(i0qjf&v^ghps*_it-d&kiw^qtscrxo'
     FINDER_DEBUG=True
