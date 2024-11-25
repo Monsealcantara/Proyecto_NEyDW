@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Trabajos Disponibles{% endblock %}
+
+{% block content %}
+    <h1>Trabajos Disponibles</h1>
+    <ul>
+        {% for job in jobs %}
+        <li>
+            <h2>{{ job.title }}</h2>
+            <p>{{ job.description }}</p>
+            <p><strong>Ubicación:</strong> {{ job.location }}</p>
+            <p><strong>Cliente:</strong> {{ job.client.user.username }}</p>
+            <a href="{% url 'jobs:job_detail' job.id %}">Ver Detalles</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

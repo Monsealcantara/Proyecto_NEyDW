@@ -27,6 +27,7 @@ urlpatterns = [
     path('jobs/', include('apps.jobs.urls')),
     path('materials/', include('apps.materials.urls')),
     path('chat/', include('apps.chat.urls')),
+    path('subscriptions/', include('apps.subscriptions.urls')),
     path('notifications/', include('apps.notifications.urls')),
 ]
 urlpatterns += static( 'media/', document_root  = settings.MEDIA_ROOT )

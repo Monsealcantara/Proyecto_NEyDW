@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Finder{% endblock %}</title>
+    <!-- Agrega aquí estilos globales -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'users:profile' %}">Mi Perfil</a></li>
+                    <li><a href="{% url 'jobs:job_list' %}">Trabajos</a></li>
+                    <li><a href="{% url 'notifications:notification_list' %}">Notificaciones</a></li>
+                    <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                {% else %}
+                    <li><a href="{% url 'users:login' %}">Iniciar Sesión</a></li>
+                    <li><a href="{% url 'users:register' %}">Registrarse</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <!-- Contenido dinámico se insertará aquí -->
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Finder. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

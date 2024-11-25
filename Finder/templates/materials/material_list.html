@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Materiales Disponibles{% endblock %}
+
+{% block content %}
+    <h1>Materiales Disponibles</h1>
+    <ul>
+        {% for material in materials %}
+        <li>
+            <strong>{{ material.name }}</strong>: ${{ material.price }}
+            <p>Proveedor: {{ material.supplier.name }}</p>
+            <p>Stock: {{ material.stock }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
