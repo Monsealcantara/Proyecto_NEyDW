@@ -1,6 +1,11 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Iniciar Sesión{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/users/loginCSS.css' %}">
+{% endblock %}
 
 {% block content %}
     <h1>Iniciar Sesión</h1>
@@ -12,6 +17,7 @@
             <input type="password" id="password" name="password" required>
             <button type="submit">Iniciar Sesión</button>
         </form>
-        <a href="{% url 'users:register' %}">Registrarse</a>
+        <p><a href="{% url 'users:password_reset' %}">Olvidé mi contraseña</a></p>
+        <p><a href="{% url 'users:register' %}">Registrarse</a></p>
     </body>
 {% endblock %}
