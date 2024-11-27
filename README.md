@@ -18,7 +18,7 @@ Instalamos librerias
 
     pip install -r requirements.amb
 
-Configurar archivo .env (crear un archivo '.env' en la misma carpeta del "manage.py")
+Configurar archivo .env (crear un archivo '.env' en la misma carpeta del "manage.py"):
 
     FINDER_SECRET_KEY='django-insecure-mmiuzz_p+*l@rng*j!1(i0qjf&v^ghps*_it-d&kiw^qtscrxo'
     FINDER_DEBUG=True
