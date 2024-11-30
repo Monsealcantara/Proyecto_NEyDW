@@ -18,7 +18,10 @@ class Quotation(models.Model):
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE, related_name='quotations')
     price = models.DecimalField(max_digits=10, decimal_places=2)
     time_estimate = models.CharField(max_length=255)  # Tiempo estimado para realizar el trabajo
-    accepted = models.BooleanField(default=False)
+    accepted = models.BooleanField(default=False)   # Campo para aceptar o rechazar la cotización
+
+    def __str__(self):
+        return f"Cotización de {self.worker.user.username} para {self.job.title}"
 
 # Guarda las reseñas de los trabajos realizados.
 class Review(models.Model):

@@ -13,14 +13,29 @@ def login_view(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
-        if user:
+        
+        if user is not None:
+            # Si las credenciales son correctas, inicia la sesión
             login(request, user)
-            return redirect('users:profile')
-    return render(request, 'users/login.html')
+            
+            # Verificar el rol del usuario y redirigir según el tipo
+            if user.role == 'cliente':
+                return redirect('users:client_home')  # Redirige a la vista de cliente
+            elif user.role == 'trabajador':
+                return redirect('users:worker_home')  # Redirige a la vista de trabajador
+            else:
+                # Si no tiene un rol asignado (opcional, pero recomendable tenerlo manejado)
+                messages.error(request, 'No se ha asignado un rol al usuario.')
+                return redirect('users:login')
+        else:
+            messages.error(request, 'Credenciales incorrectas.')
+            return redirect('login')
+
+    return render(request, 'login.html')
 
 def logout_view(request):
     logout(request)  # Finaliza la sesión del usuario
-    return redirect('users:login') 
+    return redirect('login') 
 
 def register_view(request):
     if request.method == 'POST':
@@ -80,3 +95,12 @@ def edit_profile_view(request):
             messages.success(request, 'Tu perfil ha sido actualizado exitosamente.')
             return redirect('users:profile')  # Redirigir a la página de perfil
     return render(request, 'users/edit_profile.html', {'form': form})
+
+@login_required
+def worker_home(request):
+    return render(request, 'users/home_cliente.html')
+
+
+@login_required
+def client_home(request):
+    return render(request, 'users/home_empleado.html')
