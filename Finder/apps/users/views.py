@@ -1,7 +1,10 @@
 # apps/users/views.py
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.db import IntegrityError
+from .forms import ProfileFormWorker, ProfileFormClient
 from .models import User, Worker, Client
 
 
@@ -53,4 +56,26 @@ def register_view(request):
     return render(request, 'users/register.html')
 
 def profile_view(request):
+    #Implementacion de los datos de perfil del cliente
+
+    #Implementacion de los datos de perfil del trabajador
     return render(request, 'users/profile.html', {'user': request.user})
+@login_required
+def edit_profile_view(request):
+    # Determinamos si el usuario es trabajador o cliente
+    if hasattr(request.user, 'worker_profile'):  # Es un trabajador
+        profile = request.user.worker_profile
+        form = ProfileFormWorker(instance=profile)
+        form_class = ProfileFormWorker
+    else:  # Es un cliente
+        profile, created = Client.objects.get_or_create(user=request.user)
+        form = ProfileFormClient(instance=profile)
+        form_class = ProfileFormClient
+
+    if request.method == 'POST':
+        form = form_class(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Tu perfil ha sido actualizado exitosamente.')
+            return redirect('users:profile')  # Redirigir a la página de perfil
+    return render(request, 'users/edit_profile.html', {'form': form})

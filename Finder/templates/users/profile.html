@@ -1,8 +1,26 @@
 {% extends "base.html" %}
 
-{% block title %}Lista de Trabajos{% endblock %}
+{% block title %}Inicio{% endblock %}
 
 {% block content %}
+<header>
+    <nav>
+        <ul> <!--ponerlo en un nav, tal vez-->
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'users:edit_profile' %}">Editar Perfil</a></li>
+            {% else %}
+                <li><a href="{% url 'users:login' %}">Iniciar Sesión</a></li>
+                <li><a href="{% url 'users:register' %}">Registrarse</a></li>
+            {% endif %}
+        
+            {% if  user.worker_profile %}
+                <li><a href="{% url 'jobs:job_list' %}">Trabajos</a></li>
+            {% elif user.client_profile %}
+                <li><a href="{% url 'jobs:create_job' %}">Solicitar servicio</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
     <h1>Bienvenido, {{ user.username }}</h1>
     <p><strong>Rol:</strong> {{ user.role }}</p>
     <p><strong>Email:</strong> {{ user.email }}</p>
@@ -10,6 +28,7 @@
         <h2>Perfil de Trabajador</h2>
         <p><strong>Profesión:</strong> {{ user.worker_profile.profession }}</p>
         <p><strong>Calificación:</strong> {{ user.worker_profile.rating }}</p>
+        <p><strong>Biografía:</strong> {{ user.worker_profile.bio }}</p>
     {% elif user.client_profile %}
         <h2>Perfil de Cliente</h2>
         <p><strong>Ubicación:</strong> {{ user.client_profile.location }}</p>

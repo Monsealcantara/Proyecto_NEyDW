@@ -1,0 +1,223 @@
+/* Fondo general */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(150deg, #1b1b1b, #343a40);
+    color: #f8f9fa;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Texto Finder */
+#finder {
+    font-size: 80px;
+    color: #f1c40f;
+    text-shadow: 0 0 20px #f1c40f, 0 0 30px #f39c12;
+    margin-bottom: 50px; /* Separación del cuadro de inicio de sesión */
+    animation: glow 1.5s infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 20px #f1c40f, 0 0 30px #f39c12, 0 0 40px #f39c12;
+    }
+    50% {
+        text-shadow: 0 0 30px #f1c40f, 0 0 40px #f39c12, 0 0 50px #f39c12;
+    }
+}
+
+/* Cuadro del formulario */
+.formulario {
+    width: 400px;
+    background: #212529;
+    color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    text-align: center;
+}
+
+.formulario h1 {
+    margin: 0 0 20px 0;
+    color: #007bff;
+}
+
+/* Organización de inputs */
+.username {
+    position: center;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.username label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #f8f9fa;
+}
+
+.username input {
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #343a40;
+    border-radius: 5px;
+    background: #495057;
+    color: #f8f9fa;
+    outline: none;
+}
+
+/* Botón */
+input[type="submit"] {
+    width: 100%;
+    height: 50px;
+    border: none;
+    background: #007bff;
+    border-radius: 25px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background: #0056b3;
+}
+
+/* Links */
+.recordar, .registrarseUsuario, .registrarseEmpleado {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.recordar:hover, .registrarseUsuario u:hover, .registrarseEmpleado e:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.registrarseUsuario u, .registrarseEmpleado e {
+    color: #007bff;
+    text-decoration: none;
+}
+
+
+
+/* Fondo general */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(150deg, #1b1b1b, #343a40);
+    color: #f8f9fa;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Texto Finder */
+#finder {
+    font-size: 80px;
+    color: #f1c40f;
+    text-shadow: 0 0 20px #f1c40f, 0 0 30px #f39c12;
+    margin-top: 40px; /* Espaciado desde el inicio de la página */
+    animation: glow 1.5s infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 20px #f1c40f, 0 0 30px #f39c12, 0 0 40px #f39c12;
+    }
+    50% {
+        text-shadow: 0 0 30px #f1c40f, 0 0 40px #f39c12, 0 0 50px #f39c12;
+    }
+}
+
+/* Cuadro del formulario */
+.formulario {
+    margin-top: 20px; /* Espaciado dinámico entre Finder y el formulario */
+    width: 400px;
+    background: #212529;
+    color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    text-align: center;
+}
+
+/* Título del formulario */
+.formulario h1 {
+    margin: 0 0 20px 0;
+    color: #007bff;
+}
+
+/* Organización de inputs */
+.username {
+    position: relative;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.username label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #f8f9fa;
+}
+
+.username input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #343a40;
+    border-radius: 5px;
+    background: #495057;
+    color: #f8f9fa;
+    outline: none;
+}
+
+/* Botón */
+input[type="submit"] {
+    width: 100%;
+    height: 50px;
+    border: none;
+    background: #007bff;
+    border-radius: 25px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background: #0056b3;
+}
+
+/* Links */
+.recordar, .registrarseUsuario, .registrarseEmpleado {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.recordar:hover, .registrarseUsuario u:hover, .registrarseEmpleado e:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.registrarseUsuario u, .registrarseEmpleado e {
+    color: #007bff;
+    text-decoration: none;
+}

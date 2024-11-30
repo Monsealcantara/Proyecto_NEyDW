@@ -17,7 +17,6 @@
             <ul>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'users:profile' %}">Mi Perfil</a></li>
-                    <li><a href="{% url 'jobs:job_list' %}">Trabajos</a></li>
                     <li><a href="{% url 'notifications:notification_list' %}">Notificaciones</a></li>
                     <li><a href="{% url 'users:logout' %}">Cerrar Sesión</a></li>
                 {% else %}
