@@ -1,0 +1,185 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Variables */
+  :root {
+    --primary-color: #2c7be5;
+    --secondary-color: #f4f6f8;
+    --text-color: #333;
+    --white-color: #fff;
+    --font-family: 'Arial', sans-serif;
+  }
+  
+  /* Body */
+  body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    line-height: 1.6;
+  }
+  
+  /* Header */
+  .header {
+    background-color: var(--white-color);
+    padding: 1rem 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .logo-container {
+    text-align: center;
+  }
+  
+  .logo-img {
+    max-width: 150px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .logo-slogan {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-top: 0.5rem;
+  }
+  
+  /* Navigation */
+  .navbar {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+  }
+  
+  .nav-link:hover {
+    color: var(--primary-color);
+  }
+  
+  /* Main */
+  .main {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  
+  .hero {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 4rem 1rem;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-buttons {
+    margin-bottom: 1.5rem;
+  }
+  
+  .btn-primary {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .btn-primary:hover {
+    background-color: #e6f0ff;
+  }
+  
+  .register-options {
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+  
+  .register-link {
+    text-decoration: none;
+    color: var(--white-color);
+    font-weight: bold;
+  }
+  
+  .register-link:hover {
+    text-decoration: underline;
+  }
+  
+  .divider {
+    color: var(--white-color);
+    margin: 0 0.5rem;
+  }
+  
+  /* Sections */
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .benefit-item {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+  
+  .sponsors {
+    padding: 2rem 1rem;
+  }
+  
+  .sponsors-logos {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .sponsor-logo {
+    max-width: 150px;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: var(--white-color);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-top: 1px solid #ddd;
+  }
+  
+  .footer-links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .footer-link {
+    text-decoration: none;
+    color: var(--text-color);
+  }
+  
+  .footer-link:hover {
+    color: var(--primary-color);
+  }
+  

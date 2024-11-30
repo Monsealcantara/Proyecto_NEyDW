@@ -1,23 +1,41 @@
-{% extends "base.html" %}
 {% load static %}
-
-{% block title %}Iniciar Sesión{% endblock %}
-
-{% block style %}
-    <link rel="stylesheet" href="{% static 'css/users/loginCSS.css' %}">
-{% endblock %}
-
-{% block content %}
-    <h1>Iniciar Sesión</h1>
-        <form method="POST">
-            {% csrf_token %}
-            <label for="username">Usuario:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Iniciar Sesión</button>
-        </form>
-        <p><a href="{% url 'password_reset' %}">Olvidé mi contraseña</a></p>
-        <p><a href="{% url 'users:register' %}">Registrarse</a></p>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Finder Login</title>
+    <link rel="stylesheet" href="{% static 'css/loginCSS.css' %}">
+    </head>
+    <body>
+        <div class="formulario">
+            <div class="logo">
+                <img src="Finder-LogoHombre.png" alt="Logo Finder">
+                <h1>Finder</h1>
+            </div>
+    
+            <form method="POST">
+                {% csrf_token %}
+                <h2>Inicio de Sesión</h2>
+                <!-- Campo de correo electrónico -->
+                <div class="input-container">
+                    <input type="text" id="username" name="username" required>
+                    <label for="email">Usuario</label>
+                </div>
+    
+                <!-- Campo de contraseña con funcionalidad de mostrar/ocultar -->
+                <div class="input-container">
+                    <input type="password" id="password" name="password" required>
+                    <label for="password">Contraseña</label>
+                    <button type="button" id="togglePassword" class="toggle-password">🙈</button>
+                </div>
+    
+                <div class="recordar">¿Contraseña olvidada?</div>
+                <input type="submit" value="Iniciar sesión">
+                <p><a class="recordar" href="{% url 'users:register' %}">Registrarse</a></p>
+            </form>
+        </div>
+        {% comment %} <script src="loginJs.js"></script> {% endcomment %}
     </body>
-{% endblock %}
+    </html>
+    

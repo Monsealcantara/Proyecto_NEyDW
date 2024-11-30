@@ -1,0 +1,147 @@
+/* Estilo base */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(150deg, #007bff, #ffffff);
+    height: 100vh;
+}
+
+.formulario {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 80px;
+    height: 80px;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #007bff;
+}
+
+form h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Contenedor de entrada */
+.input-container {
+    position: relative;
+    margin: 20px 0;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px 5px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #adadad;
+    outline: none;
+    background: none;
+    transition: border-color 0.3s;
+}
+
+.input-container label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Cuando el campo está en focus o contiene texto */
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+    top: -5px;
+    font-size: 14px;
+    color: #007bff;
+    transition: top 0.3s ease, color 0.3s ease;
+}
+
+.input-container input:focus {
+    border-bottom-color: #007bff;
+}
+
+/* Botón de mostrar/ocultar contraseña */
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #adadad;
+}
+
+.toggle-password:hover {
+    color: #007bff;
+}
+
+.recordar {
+    text-align: right;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.recordar:hover {
+    text-decoration: underline;
+}
+
+input[type="submit"] {
+    width: 100%;
+    height: 40px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-inline-end: 50px;
+}
+
+input[type="submit"]:hover {
+    background: #0056b3;
+}
+
+.registrarse {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.registrarse button {
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.registrarse button:hover {
+    background: #0056b3;
+}
