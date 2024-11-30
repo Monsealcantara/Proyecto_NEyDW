@@ -122,9 +122,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'es-mx'
+TIME_ZONE = 'Etc/GMT+6'
 
 USE_I18N = True
 
@@ -133,7 +132,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -143,8 +143,8 @@ EMAIL_HOST = os.environ['FINDER_EMAIL_HOST']
 EMAIL_PORT = os.environ['FINDER_EMAIL_PORT']
 EMAIL_HOST_USER = os.environ['FINDER_EMAIL_USER']
 EMAIL_HOST_PASSWORD = os.environ['FINDER_EMAIL_PASS']
-EMAIL_USE_TLS = bool(os.environ.get('FINDER_EMAIL_TLS'))
-EMAIL_USE_SSL = bool(os.environ.get('FINDER_EMAIL_SSL'))
+EMAIL_USE_TLS = bool(os.environ.get('FINDER_EMAIL_TLS', True)) 
+EMAIL_USE_SSL = bool(os.environ.get('FINDER_EMAIL_SSL', False)) 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

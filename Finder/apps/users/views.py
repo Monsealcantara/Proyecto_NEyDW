@@ -60,6 +60,7 @@ def profile_view(request):
 
     #Implementacion de los datos de perfil del trabajador
     return render(request, 'users/profile.html', {'user': request.user})
+    
 @login_required
 def edit_profile_view(request):
     # Determinamos si el usuario es trabajador o cliente
