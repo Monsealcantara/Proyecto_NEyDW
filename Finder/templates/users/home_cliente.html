@@ -4,4 +4,24 @@
 
 {% block content %}
     <h1>Bienvenido, {{ user.username }}</h1>
+
+    <!-- Formulario de búsqueda -->
+    <form method="get" action="{% url 'users:search_services' %}">
+        <input type="text" name="keyword" placeholder="Buscar servicio por palabra clave" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Mostrar los servicios encontrados -->
+    {% if services %}
+        <h2>Servicios encontrados:</h2>
+        <ul>
+            {% for service in services %}
+                <li>{{ service.name }} - {{ service.description }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        {% if false_search %}
+            <p>No se encontraron servicios.</p>
+        {% endif %}
+    {% endif %}
 {% endblock %}

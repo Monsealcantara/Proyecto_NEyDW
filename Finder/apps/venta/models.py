@@ -16,7 +16,6 @@ class ItemVenta(models.Model):
         verbose_name = "item_venta"
         verbose_name_plural = "items_ventas"
         ordering=['cantidad']
-        unique_together=('producto','precio')
 
 # Modelo para Venta
 class Venta(models.Model):

@@ -6,8 +6,8 @@ from django.contrib import messages
 from django.db import IntegrityError
 from .forms import ProfileFormWorker, ProfileFormClient, UserEditForm, ServiceForm
 from .models import User, Worker, Client, Service, WorkerService, Keyword
+from apps.subscriptions.models import Subscription, SubscriptionUser
 from apps.materials.models import Material
-
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -65,7 +65,8 @@ def register_view(request):
                 if Worker.objects.filter(user=user).exists():
                     return render(request, 'users/register.html', {'error': 'Este usuario ya está registrado como trabajador.'})
                 Worker.objects.create(user=user)
-
+            suscription=Subscription.objects.get(plan_name='GRATUITA')
+            SubscriptionUser.objects.create(user=user, suscription=suscription, status=True)
             return redirect('login')
         except IntegrityError:
             return render(request, 'users/register.html', {'error': 'Ocurrió un error al registrar al usuario.'})
@@ -225,3 +226,41 @@ def delete_service(request, pk):
         return redirect('users:list_services')
 
     return render(request, 'users/delete_service.html', {'users': service})
+
+def search_services(request):
+    # Obtenemos la palabra clave de la búsqueda
+    keyword = request.GET.get('keyword')
+    
+    # Obtenemos el usuario actual
+    user = request.user
+
+    # Comprobamos si el usuario tiene una suscripción y su tipo
+    subscription_user = SubscriptionUser.objects.filter(user=user).first()
+    
+    if subscription_user:
+        subscription = subscription_user.subscription
+    else:
+        subscription = None  # Si no hay suscripción, consideramos la opción gratuita
+
+    # Lógica para la búsqueda de servicios
+    services = []
+    false_search = True
+
+    if keyword:
+        # Buscamos la palabra clave en el modelo Keyword
+        keyword_obj = Keyword.objects.filter(word__icontains=keyword).first()  # Búsqueda insensible a mayúsculas
+        if keyword_obj:
+            # Si la palabra clave existe, buscamos los servicios relacionados
+            services = Service.objects.filter(keywords=keyword_obj)
+
+            # Si es un plan gratuito, mostramos solo algunos servicios (limitados)
+            if subscription and subscription.is_free:
+                services = services[:5]  # Limitar la cantidad de servicios mostrados (por ejemplo, 5)
+
+            false_search = not bool(services)  # Si no se encuentran servicios, indicamos que fue una búsqueda fallida
+
+    return render(request, 'users/home_cliente.html', {
+        'services': services, 
+        'false_search': false_search, 
+        'subscription': subscription
+    })
