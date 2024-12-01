@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Trabajos{% endblock %}
+
+{% block content %}
+
+<h1>Servicios Ofrecidos</h1>
+<ul>
+  {% for service in services %}
+    <li>
+      <p><strong>Nombre del Servicio:</strong> {{ service.name }}</p> 
+      <p><strong>Descripción:</strong> {{ service.description }}</p>
+      <p><strong>Palabras clave:</strong> 
+        {% for keyword in service.keywords.all %}
+            {{ keyword.word }}{% if not forloop.last %}, {% endif %}
+        {% endfor %}
+      </p>
+      <a href="{% url 'users:edit_service' service.pk %}">Editar</a> | 
+      <a href="{% url 'users:delete_service' service.pk %}">Eliminar</a>
+    </li>
+  {% empty %}
+    <li>No hay servicios disponibles.</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'users:create_service' %}">Crear Nuevo Servicio</a>
+
+{% endblock %}

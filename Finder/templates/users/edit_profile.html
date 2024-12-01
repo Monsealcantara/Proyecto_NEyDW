@@ -1,4 +1,13 @@
-{% extends 'base.html' %}
+<form method="post">
+  {% csrf_token %}
+  
+  <!-- Formulario para editar los datos del usuario -->
+  <h3>Editar Información de Usuario</h3>
+  {{ form_user.as_p }}
+  
+  <!-- Formulario para editar el perfil del trabajador o cliente -->
+  <h3>Editar Perfil</h3>
+  {{ form_profile.as_p }}
 
 {% block content %}
   <h2>Editar Perfil</h2>

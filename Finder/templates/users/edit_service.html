@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Trabajos{% endblock %}
+
+{% block content %}
+<!-- edit_service.html -->
+<h1>Editar Servicio</h1>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Actualizar Servicio</button>
+</form>
+<a href="{% url 'users:list_services' %}">Volver a la lista de servicios</a>
+
+
+{% endblock %}

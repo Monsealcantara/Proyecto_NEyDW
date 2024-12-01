@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Crear Nuevo Servicio{% endblock %}
+
+{% block content %}
+<h1>Crear Nuevo Servicio</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Guardar Servicio</button>
+</form>
+
+<a href="{% url 'users:list_services' %}">Volver a la lista de servicios</a>
+{% endblock %}
