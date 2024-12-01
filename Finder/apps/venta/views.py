@@ -24,6 +24,10 @@ def ventas_list(request):
     ventas = Venta.objects.filter(items__producto__empresa=request.user).distinct().prefetch_related('items')
     return render(request, 'venta/ventas_list.html', {'ventas': ventas})
 
-def compras_cliente(request):
+def compras_lista(request):
     ventas = Venta.objects.filter(usuario=request.user).prefetch_related('items')
-    return render(request, 'venta/compras_cliente.html', {'ventas': ventas})
+    
+    for venta in ventas:
+        venta.total = sum(item.cantidad * item.precio for item in venta.items.all())
+
+    return render(request, 'venta/compras_lista.html', {'ventas': ventas})

@@ -22,7 +22,7 @@
                      <li><a href="{% url 'users:list_services' %}">Servicios</a></li>
                      <li><a href="{% url 'materials:tienda' %}">Tienda</a></li>
                      <li><a href="{% url 'carrito:ver_carrito' %}">Carrito</a></li>
-                    
+                     <li><a href="{% url 'venta:compras_lista'%}"">Compras</a></li>
                      {% elif user.role == 'cliente' %}
                      <li><a href="{% url 'users:client_home' %}">Home</a></li>
                      {% elif user.role == 'empresa' %}

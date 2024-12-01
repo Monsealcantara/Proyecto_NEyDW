@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Mis Compras{% endblock %}
+
+{% block content %}
+<h1>Mis Compras</h1>
+    {% for venta in ventas %}
+        <ul>Venta ID: {{ venta.id }} - Fecha: {{ venta.fecha_venta }} - Total: ${{ venta.total }}</ul>
+        <ul>
+            {% for item in venta.items.all %}
+                <li>{{ item.producto.name }} - Cantidad: {{ item.cantidad }} - Precio: ${{ item.precio }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    <a href="{% url 'users:worker_home' %}">Regresar</a>
+{% endblock %}
