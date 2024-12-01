@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <h1>Bienvenido, {{ user.username }}</h1>
+    <p><strong>Rol:</strong> {{ user.role }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <h2>Productos</h2>
+
+    <a href="{% url 'materials:agregar_material' %}">Agregar Producto</a> 
+
+    <br>
+    {% if materials %}
+        {% for material in materials %}
+        <li>
+                {{ material.name }} 
+                {{ material.price }}
+                {{ material.description }}
+                {{ material.stock }}
+                {%if material.imagen.url%}
+                    <td>
+                        <img src="{{material.imagen.url}}" width="100" height="100"></img>
+                    </td> 
+                {%else%}
+                    <td> Imagen no disponible </td>
+                {%endif%}
+                <a href="{% url 'materials:editar_material' material.id %}">Editar</a> - 
+                <a href="{% url 'materials:eliminar_material' material.id %}">Eliminar</a>
+            </li>
+        {% endfor %}
+    {% else %}
+        Por el momento no hay producto
+    {% endif %}
+    
+
+{% endblock %}

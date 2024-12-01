@@ -20,9 +20,13 @@
                      <li><a href="{% url 'users:worker_home' %}">Home</a></li>
                      <li><a href="{% url 'jobs:job_list' %}">Trabajos</a></li>
                      <li><a href="{% url 'users:list_services' %}">Servicios</a></li>
-                     
-                     {% else %}
+                     <li><a href="{% url 'users:list_services' %}">Tienda</a></li>
+                    
+                     {% elif user.role == 'cliente' %}
                      <li><a href="{% url 'users:client_home' %}">Home</a></li>
+                     {% elif user.role == 'empresa' %}
+                     <li><a href="{% url 'users:empresa_home' %}">Home</a></li>
+                     <li><a>Ventas</a></li>
                      {% endif %}
                     <li><a href="{% url 'notifications:notification_list' %}">Notificaciones</a></li>
                     <li><a href="{% url 'users:profile' %}">Mi Perfil</a></li>

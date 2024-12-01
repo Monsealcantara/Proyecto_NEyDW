@@ -6,13 +6,15 @@ from django.contrib import messages
 from django.db import IntegrityError
 from .forms import ProfileFormWorker, ProfileFormClient, UserEditForm, ServiceForm
 from .models import User, Worker, Client, Service, WorkerService, Keyword
+from apps.materials.models import Material
 
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
-        
+
+        print(user)
         if user is not None:
             # Si las credenciales son correctas, inicia la sesión
             login(request, user)
@@ -22,6 +24,8 @@ def login_view(request):
                 return redirect('users:client_home')  # Redirige a la vista de cliente
             elif user.role == 'trabajador':
                 return redirect('users:worker_home')  # Redirige a la vista de trabajador
+            elif user.role == 'empresa':
+                return redirect('users:empresa_home') 
             else:
                 # Si no tiene un rol asignado (opcional, pero recomendable tenerlo manejado)
                 messages.error(request, 'No se ha asignado un rol al usuario.')
@@ -73,7 +77,12 @@ def worker_home(request):
 
 @login_required
 def client_home(request):
-    return render(request, 'users/home_cliente.html')
+    return render(request, 'users/home_cliente.html', {'materials': materials})
+
+@login_required
+def empresa_home(request):
+    materials = Material.objects.filter(empresa=request.user)
+    return render(request, 'users/home_empresa.html', {'materials': materials})
 
 @login_required
 def profile_view(request):

@@ -5,5 +5,8 @@ from . import views
 app_name = 'materials'
 
 urlpatterns = [
-    path('', views.material_list, name='material_list'),
+    path('agregar_material/', views.agregar_material, name='agregar_material'),
+    path('editar_material/<int:id>/', views.editar_material, name='editar_material'),
+    path('eliminar_material/<int:id>/', views.eliminar_material, name='eliminar_material'),
+
 ]

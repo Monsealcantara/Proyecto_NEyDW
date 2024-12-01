@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'apps.subscriptions',
     'apps.notifications',
     'apps.chat',
+    'apps.carrito',
+    'apps.venta',
 ]
 
 MIDDLEWARE = [

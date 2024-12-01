@@ -6,7 +6,7 @@ from .models import Worker, Client, Service, Keyword
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email']  # Los campos editables del usuario
+        fields = ['email']  # Los campos editables del usuario
         widgets = {
             'email': forms.EmailInput(attrs={'placeholder': 'Correo electrónico'}),
         }

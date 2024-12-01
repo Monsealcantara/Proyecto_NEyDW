@@ -6,13 +6,8 @@
     <h1>Bienvenido, {{ user.username }}</h1>
     <p><strong>Rol:</strong> {{ user.role }}</p>
     <p><strong>Email:</strong> {{ user.email }}</p>
-    {% if user.worker_profile %}
-        <h2>Perfil de Trabajador</h2>
-        <p><strong>Profesión:</strong> {{ user.worker_profile.profession }}</p>
-        <p><strong>Calificación:</strong> {{ user.worker_profile.rating }}</p>
-        <p><strong>Biografía:</strong> {{ user.worker_profile.bio }}</p>
-    {% elif user.client_profile %}
-        <h2>Perfil de Cliente</h2>
-        <p><strong>Ubicación:</strong> {{ user.client_profile.location }}</p>
-    {% endif %}
+    <h2>Perfil de Trabajador</h2>
+    <p><strong>Profesión:</strong> {{ user.worker_profile.profession }}</p>
+    <p><strong>Calificación:</strong> {{ user.worker_profile.rating }}</p>
+    <p><strong>Biografía:</strong> {{ user.worker_profile.bio }}</p>
 {% endblock %}
