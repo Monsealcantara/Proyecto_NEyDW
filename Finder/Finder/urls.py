@@ -31,6 +31,8 @@ urlpatterns = [
     path('chat/', include('apps.chat.urls')),
     path('subscriptions/', include('apps.subscriptions.urls')),
     path('notifications/', include('apps.notifications.urls')),
+    path('carrito/', include('apps.carrito.urls')),
+    path('venta/', include('apps.venta.urls')),
 
     path('login/', user_views.login_view, name='login'),
     path('logout/', user_views.logout_view, name='logout'),

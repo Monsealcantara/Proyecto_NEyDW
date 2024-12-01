@@ -19,7 +19,7 @@ def agregar_material(request):
             material = form.save(commit=False)
             material.empresa = request.user
             material.save()
-            return redirect('users:empresa_home')  # Redirige a la vista de listar materials
+            return redirect('carrito:tienda')  # Redirige a la vista de listar materials
     else:
         form = MaterialForm()
     return render(request, 'materials/agregar_material.html', {'form': form})
@@ -41,3 +41,8 @@ def eliminar_material(request, id):
         material.delete()
         return redirect('users:empresa_home')
     return render(request, 'materials/eliminar_material.html', {'material': material})
+
+def tienda(request):
+    materials = Material.objects.all().order_by('id')
+    print(materials)
+    return render(request, 'materials/listar_materials.html',{'materials': materials})

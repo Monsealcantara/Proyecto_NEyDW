@@ -77,7 +77,7 @@ def worker_home(request):
 
 @login_required
 def client_home(request):
-    return render(request, 'users/home_cliente.html', {'materials': materials})
+    return render(request, 'users/home_cliente.html')
 
 @login_required
 def empresa_home(request):

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Productos Disponibles{% endblock %}
+
+{% block content %}
+<h1>Productos</h1>
+    <ul>
+        {% if materials %}
+            {% for material in materials %}
+                <li>
+                    {{ material.name }} 
+                    {{ material.price }}
+                    {{ material.description }}
+                    {{ material.stock }}
+                    {% if material.stock > 0 %}
+                        <a href="{% url 'carrito:agregar_carrito' material.id %}">Agregar al Carrito</a>
+                    {% else %}
+                        Producto Agotado
+                    {% endif %}
+                    {% if material.imagen.url %}
+                        <td>
+                            <img src="{{material.imagen.url}}" width="100" height="100"></img>
+                        </td> 
+                    {% else %}
+                        <td> Imagen no disponible </td>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        {% else %}
+            Por el momento no hay productos
+        {% endif %}
+    </ul>
+    {% endblock %}
