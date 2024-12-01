@@ -1,0 +1,286 @@
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    /*background: #f4f4f9;*/
+    background: linear-gradient(150deg, #007bff, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 100px;
+    margin-bottom: 15px;
+}
+
+.logo h1 {
+    font-size: 32px;
+    color: #007bff;
+}
+
+.logo p {
+    font-size: 14px;
+    color: #777;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* Estilos para los campos de entrada */
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #555;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fafafa;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #007bff;
+}
+
+.input-group input::placeholder,
+.input-group select::placeholder {
+    color: #aaa;
+}
+
+/* Mostrar/ocultar contraseña */
+.show-password {
+    position: absolute;
+    right: 15px;
+    top: 70%;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #007bff;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+
+/* Aceptar términos */
+.terms-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.terms-group input {
+    margin-right: 10px;
+}
+
+.terms-group a {
+    color: #007bff;
+}
+
+.terms-group a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para los botones */
+.button-group input[type="submit"],
+.button-group button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-group input[type="submit"]:hover,
+.button-group button:hover {
+    background-color: #0056b3;
+}
+
+.button-group button {
+    background-color: #f4f4f9;
+    color: #333;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+}
+
+
+.btn-primary {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    padding: 14px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .btn-primary:hover {
+    background-color: #97c9fe;
+  }
+
+/* Estilo del campo "Rol" */
+.input-group label[for="role"] {
+    font-weight: bold; /* Hace que la etiqueta del rol esté en negrita */
+    margin-bottom: 0.5rem; /* Añade un pequeño espacio debajo de la etiqueta */
+    display: block; /* Asegura que la etiqueta ocupe toda la línea */
+    color: #0056b3; /* Cambia el color del texto de la etiqueta a un azul oscuro */
+}
+
+select#role {
+    background-color: #ffffff; /* Fondo blanco para el select */
+    color: #333; /* Texto oscuro */
+    font-size: 1rem; /* Tamaño de fuente adecuado */
+    border: 1px solid #007bff; /* Borde azul claro */
+    padding: 0.8rem; /* Espaciado interno para el select */
+    width: 100%; /* Asegura que ocupe todo el ancho del formulario */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-top: 0.3rem; /* Espacio por encima del select */
+}
+
+select#role:focus {
+    border-color: #0056b3; /* Cambia el borde a un azul más oscuro al hacer foco */
+    outline: none; /* Elimina el borde azul predeterminado */
+}
+
+/* Estilo para los inputs de texto y contraseña */
+.input-group input[type="text"], 
+.input-group input[type="email"], 
+.input-group input[type="password"],
+select {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #333; /* Texto oscuro */
+    font-size: 1rem; /* Tamaño de fuente adecuado */
+    border: 1px solid #007bff; /* Borde azul claro */
+    padding: 0.8rem; /* Espaciado interno */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-top: 0.3rem; /* Espacio por encima del campo */
+}
+
+.input-group input[type="text"]:focus,
+.input-group input[type="email"]:focus,
+.input-group input[type="password"]:focus,
+select:focus {
+    border-color: #0056b3; /* Borde azul oscuro al hacer foco */
+    outline: none; /* Elimina el borde de foco predeterminado */
+}
+
+/* Asegura que el select tenga un aspecto consistente con los inputs */
+.input-group {
+    margin-bottom: 1.5rem; /* Espacio entre los grupos de inputs */
+}
+
+/* Estilo para el checkbox de los términos */
+.terms-group {
+    display: flex;
+    align-items: center;
+}
+
+.terms-group input {
+    margin-right: 10px;
+}
+
+.terms-group label {
+    font-size: 0.9rem;
+}
+
+.terms-group a {
+    color: #0056b3; /* Enlace azul oscuro */
+    text-decoration: none;
+}
+
+.terms-group a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para los botones */
+.button-group input[type="submit"] {
+    background-color: #007bff; /* Fondo azul brillante */
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    cursor: pointer;
+}
+
+.button-group input[type="submit"]:hover {
+    background-color: #0056b3; /* Fondo azul oscuro al pasar el mouse */
+}
+
+.btn-primary a {
+    background-color: #0056b3; /* Fondo azul oscuro */
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-primary a:hover {
+    background-color: #007bff; /* Fondo azul brillante al pasar el mouse */
+}
