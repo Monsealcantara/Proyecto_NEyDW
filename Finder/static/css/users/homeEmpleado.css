@@ -1,0 +1,52 @@
+
+h1, h2, p {
+    text-align: center; /* Centrar el texto */
+}
+
+h1 {
+    color: #007bff; /* Azul principal */
+    padding-top: 20px;
+}
+
+h2 {
+    color: #1983e6; /* Azul secundario */
+    margin-top: 30px;
+}
+
+/* Para que el contenido no sea cubierto por el footer */
+.content {
+    flex-grow: 1; /* Esto asegura que el contenido crezca y ocupe el espacio restante */
+    padding-bottom: 60px; /* Agrega espacio adicional en la parte inferior */
+}
+.sub-header{
+    background-color: #72aff0;
+    color: #fff;
+}
+/* Contenedor para centrar la imagen */
+.img-container {
+    display: flex; /* Usamos flexbox para centrar */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+/* Estilo de la imagen */
+.profile-img {
+    width: 150px; /* Tamaño fijo para las imágenes */
+    height: 150px;
+    border-radius: 50%; /* Hacer la imagen redonda */
+    object-fit: cover; /* Asegura que la imagen se ajuste sin distorsionarse */
+    margin: 20px 0;
+}
+
+/* Estilo adicional para el perfil */
+.profile-section {
+    background-color: #ffffff; /* Fondo blanco para el perfil */
+    border: 1px solid #e0e0e0; /* Borde suave */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 80%; /* Limitar el ancho del perfil */
+    max-width: 800px; /* Ancho máximo del perfil */
+}

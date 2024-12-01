@@ -15,7 +15,7 @@ class UserEditForm(forms.ModelForm):
 class ProfileFormWorker(forms.ModelForm):
     class Meta:
         model = Worker
-        fields = ['bio', 'gallery']
+        fields = ['profession','bio', 'gallery']
 
 # Formulario para editar el perfil de un cliente
 class ProfileFormClient(forms.ModelForm):

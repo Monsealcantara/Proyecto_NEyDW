@@ -1,0 +1,82 @@
+/* Estilos generales para el formulario */
+form {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #f8f9fc; /* Fondo claro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos de sección */
+h3, h2 {
+    color: #007bff; /* Azul principal */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilos de los campos del formulario */
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #007bff; /* Borde azul */
+    border-radius: 4px;
+    background-color: #e6f2ff; /* Fondo azul claro */
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+/* Efecto al hacer foco en los campos */
+form input:focus, form select:focus, form textarea:focus {
+    border-color: #1983e6; /* Azul secundario */
+    background-color: #ffffff; /* Fondo blanco */
+    outline: none;
+}
+
+/* Estilo del botón de envío */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff; /* Azul principal */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto de hover en el botón */
+button[type="submit"]:hover {
+    background-color: #1983e6; /* Azul más claro */
+}
+
+/* Para los subtítulos de los formularios */
+h2 {
+    color: #1983e6; /* Azul secundario */
+}
+
+/* Espaciado entre los formularios */
+form > div {
+    margin-bottom: 20px;
+}
+
+/* Estilos de los campos de texto más grandes (textarea) */
+textarea {
+    height: 100px;
+    resize: vertical; /* Permitir cambiar el tamaño vertical */
+}
+
+/* Mejorar la visibilidad de los mensajes de error si los hay */
+.form-error {
+    color: #e74c3c; /* Rojo para los errores */
+    font-size: 14px;
+    margin-top: 5px;
+}
+/* Para que el contenido no sea cubierto por el footer */
+.content {
+    flex-grow: 1; /* Esto asegura que el contenido crezca y ocupe el espacio restante */
+    padding-bottom: 60px; /* Agrega espacio adicional en la parte inferior */
+}
