@@ -13,63 +13,58 @@
     <div class="container">
         <div class="form-container">
             <div class="logo">
-                <img src="Finder-LogoHombre.png" alt="Logo">
+                <img src="{% static 'images/Finder-LogoHombre.png' %}" alt="Logo">
                 <h1>Finder</h1>
                 <p>Únete y empieza a encontrar la solución</p>
             </div>
-            <form id="registroForm">
-                {% csrf_token %}
-                <h2>Registro de Usuario</h2>
+                <form method="POST" id="registroForm">
+                    {% csrf_token %}
+                    <h2>Registro de Usuario</h2>
 
-                <div class="input-group">
-                    <label for="nombres">Nombre:</label>
-                    <input type="text" id="nombres" required placeholder="Ingresa tu nombre">
-                </div>
-                <div class="input-group">
-                    <label for="apellidos">Apellidos:</label>
-                    <input type="text" id="apellidos" required placeholder="Ingresa tu apellido">
-                </div>
-                <div class="input-group">
-                    <label for="nombres">Nombre de usuario:</label>
-                    <input type="text" id="nombres" required placeholder="Ingresa tu usuario">
-                </div>
+                    <div class="input-group">
+                        <label for="first_name">Nombre:</label>
+                        <input type="first_name" name="first_name" id="first_name" required placeholder="Ingresa tu nombre">
+                    </div>
+                    <div class="input-group">
+                        <label for="last_name">Apellidos:</label>
+                        <input type="last_name" name="last_name" id="last_name" required placeholder="Ingresa tu apellido">
+                    </div>
+                    <div class="input-group">
+                        <label for="username">Nombre de usuario:</label>
+                        <input type="text" name="username" id="username" required>
+                    </div>
 
-                <div class="input-group">
-                    <label for="email">Correo electrónico:</label>
-                    <input type="email" id="correo" required placeholder="tuemail@dominio.com"> 
-                    <small class="error-message" id="correoError"></small>
-                </div>
+                    <div class="input-group">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" name="email" id="email" required placeholder="tuemail@dominio.com"> 
+                        <small class="error-message" id="correoError"></small>
+                    </div>
 
-                <div class="input-group">
-                    <label for="password">Contraseña:</label>
-                    <input type="password" name="password" id="password" required>
-                    <button type="button" id="togglePassword" class="show-password">🙈</button>
-                </div>
+                    <div class="input-group">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" name="password" id="password" required>
+                        <button type="button" id="togglePassword" class="show-password">🙈</button>
+                    </div>
 
-                <div class="terms-group">
-                    <input type="checkbox" id="terms" required>
-                    <label for="terms">Acepto los <a href="#">términos y condiciones</a></label>
-                </div>
-                <div>
-
-                </div>
-                    <label for="role">Escoge tu rol:</label>
-                    <select name="role" id="role" required>
-                        <option value="cliente">Cliente</option>
-                        <option value="trabajador">Trabajador</option>
-                    </select>
-                </div>
-                <div class="button-group">
-                    <input type="submit" value="Registrarse">
-                </div>
-
-                <div class="btn-primary">
-                    <a href="{% url 'login' %}" type="button" class="btn-primary">Regresar a Iniciar sesión</a>
-                </div>
-
-            </form>
+                    <div class="terms-group">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">Acepto los <a href="#">términos y condiciones</a></label>
+                    </div>
+                        <label for="role">Escoge tu rol:</label>
+                        <select name="role" id="role" required>
+                            <option value="cliente">Cliente</option>
+                            <option value="trabajador">Trabajador</option>
+                        </select>
+                    </div>
+                    <div class="button-group">
+                        <input type="submit" value="Registrarse">
+                    </div>
+                    <div class="btn-primary">
+                        <a href="{% url 'login' %}" type="button" class="btn-primary">Regresar a Iniciar sesión</a>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
     <script src="registrarUsuarioJs.js"></script>
 </body>
 </html>
@@ -98,4 +93,4 @@
     </select>
 
     <button type="submit">Registrar</button>
-</form>  {% endcomment %}
+</form>  {% endcomment %} 
