@@ -7,6 +7,7 @@
     <title>{% block title %}Finder{% endblock %}</title>
     <!-- Agrega aquí estilos globales -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    
     {% block style %} 
     <!-- Estilos y librerias -->
     {% endblock %}
@@ -22,14 +23,14 @@
                      <li><a href="{% url 'users:list_services' %}">Servicios</a></li>
                      <li><a href="{% url 'materials:tienda' %}">Tienda</a></li>
                      <li><a href="{% url 'carrito:ver_carrito' %}">Carrito</a></li>
-                     <li><a href="{% url 'venta:compras_lista'%}"">Compras</a></li>
+                     <li><a href="{% url 'venta:compras_lista'%}">Compras</a></li>
                      {% elif user.role == 'cliente' %}
                      <li><a href="{% url 'users:client_home' %}">Home</a></li>
                      <li><a href="{% url 'jobs:list_quotations' %}">Cotizaciones</a></li>
 
                      {% elif user.role == 'empresa' %}
                      <li><a href="{% url 'users:empresa_home' %}">Home</a></li>
-                     <li><a href="{% url 'venta:ventas_list'%}"">Ventas</a></li>
+                     <li><a>Ventas</a></li>
                      {% endif %}
                     <li><a href="{% url 'notifications:notification_list' %}">Notificaciones</a></li>
                     <li><a href="{% url 'users:profile' %}">Mi Perfil</a></li>

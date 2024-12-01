@@ -2,8 +2,12 @@
 
 {% block title %}Inicio{% endblock %}
 
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/users/homeEmpleado.css' %}">
+{% endblock %}
 {% block content %}
-<header>
+<header class="sub-header">
     <nav>
         <ul> <!--ponerlo en un nav, tal vez-->
             {% if user.is_authenticated %}
@@ -21,7 +25,11 @@
         </ul>
     </nav>
 </header>
+<div class="content">
     <h1>Bienvenido, {{ user.username }}</h1>
+    <div class="img-container">
+        <img src="{% static 'images/LuisPerfilTrabajador.jpg' %}" alt="Foto de Perfil" class="profile-img">
+    </div>
     <p><strong>Rol:</strong> {{ user.role }}</p>
     <p><strong>Email:</strong> {{ user.email }}</p>
     {% if user.worker_profile %}
@@ -33,4 +41,6 @@
         <h2>Perfil de Cliente</h2>
         <p><strong>Ubicación:</strong> {{ user.client_profile.location }}</p>
     {% endif %}
+</div>
+
 {% endblock %}
