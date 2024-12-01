@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Detalle de Cotización</h2>
+  
+  <p><strong>Servicio:</strong> {{ quotation.service.name }}</p>
+  <p><strong>Descripción:</strong> {{ quotation.description }}</p>
+  <p><strong>Presupuesto Inicial:</strong> {{ quotation.budget }}</p>
+  <p><strong>Tiempo Estimado:</strong> {{ quotation.time_estimate }}</p>
+
+  <a href="{% url 'jobs:contraofertar_quotations' %}">Contraofertar</a>
+  <a href="{% url 'jobs:rechazar_quotations' %}">Rechazar</a>
+  <a href="{% url 'jobs:job_list' %}">Regresar</a>
+ {% endblock %}

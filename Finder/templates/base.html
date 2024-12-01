@@ -25,6 +25,8 @@
                      <li><a href="{% url 'venta:compras_lista'%}"">Compras</a></li>
                      {% elif user.role == 'cliente' %}
                      <li><a href="{% url 'users:client_home' %}">Home</a></li>
+                     <li><a href="{% url 'jobs:list_quotations' %}">Cotizaciones</a></li>
+
                      {% elif user.role == 'empresa' %}
                      <li><a href="{% url 'users:empresa_home' %}">Home</a></li>
                      <li><a href="{% url 'venta:ventas_list'%}"">Ventas</a></li>

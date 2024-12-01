@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Crear Cotización</h2>
+  
+  <p>{{ service.worker.user }}</p>
+  <p>{{ service.worker.profession }}</p>
+  <p>{{ service.worker.bio }}</p>
+  <p>{{ service.worker.gallery }}</p>
+  <p>{{ service.name.rating }}</p>
+  <p>{{ service.description }}</p>
+
+  <h3>Cotización</h3>
+  <form method="POST">
+    {% csrf_token %}
+    
+    <!-- Mostrar el formulario de cotización con todos los campos -->
+    {{ form.as_p }}
+
+    <!-- Campo para mostrar el mapa -->
+    <div>
+      <label for="location">Ubicación (Seleccione en el mapa)</label>
+      <input type="text" id="location" name="location" placeholder="Haz clic en el mapa para seleccionar la ubicación" value="{{ form.location.value }}">
+      <div id="map" style="width: 100%; height: 400px;"></div>
+    </div>
+
+    <button type="submit">Crear Cotización</button>
+  </form>
+
+  <a href="{% url 'users:client_home' %}">Volver a inicio</a>
+
+  <!-- Agregar el script de Google Maps -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8FLwKO0OD3Gn5NySsmhkL36ig_BmgFI8&callback=initMap&libraries=places" async defer></script>
+
+  <script>
+    let map;
+    let marker;
+
+    function initMap() {
+      // Configura el mapa centrado en una ubicación predeterminada
+      const defaultLocation = { lat: -34.397, lng: 150.644 };  // Cambia por una ubicación predeterminada (puede ser la del usuario si la tienes)
+      
+      map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: defaultLocation,
+      });
+
+      // Crea un marcador en la ubicación por defecto
+      marker = new google.maps.Marker({
+        position: defaultLocation,
+        map: map,
+        draggable: true, // Permite mover el marcador
+      });
+
+      // Cuando el marcador es movido, actualiza el campo de texto con las coordenadas
+      google.maps.event.addListener(marker, "dragend", function () {
+        const position = marker.getPosition();
+        document.getElementById("location").value = position.lat() + ", " + position.lng();
+      });
+
+      // Permite hacer clic en el mapa para agregar un marcador
+      google.maps.event.addListener(map, "click", function (event) {
+        const clickedLocation = event.latLng;
+        marker.setPosition(clickedLocation);
+        document.getElementById("location").value = clickedLocation.lat() + ", " + clickedLocation.lng();
+      });
+    }
+
+    // Llama a la función de inicialización cuando la API de Google Maps cargue
+    window.initMap = initMap;
+  </script>
+{% endblock %}

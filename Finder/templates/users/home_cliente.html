@@ -16,7 +16,10 @@
         <h2>Servicios encontrados:</h2>
         <ul>
             {% for service in services %}
-                <li>{{ service.name }} - {{ service.description }}</li>
+                <li>{{ service.name }}</li>
+                <li>{{ service.description }}</li>
+                <li><a>Ver perfil</a></li>
+                <li><a href="{% url 'jobs:create_quotation' service.id %}">Solicitar Servicio</a></li>                
             {% endfor %}
         </ul>
     {% else %}

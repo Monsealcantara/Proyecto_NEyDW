@@ -8,6 +8,7 @@ from .forms import ProfileFormWorker, ProfileFormClient, UserEditForm, ServiceFo
 from .models import User, Worker, Client, Service, WorkerService, Keyword
 from apps.subscriptions.models import Subscription, SubscriptionUser
 from apps.materials.models import Material
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -66,7 +67,7 @@ def register_view(request):
                     return render(request, 'users/register.html', {'error': 'Este usuario ya está registrado como trabajador.'})
                 Worker.objects.create(user=user)
             suscription=Subscription.objects.get(plan_name='GRATUITA')
-            SubscriptionUser.objects.create(user=user, suscription=suscription, status=True)
+            SubscriptionUser.objects.create(user=user, suscription=suscription, is_free=True)
             return redirect('login')
         except IntegrityError:
             return render(request, 'users/register.html', {'error': 'Ocurrió un error al registrar al usuario.'})
@@ -237,11 +238,6 @@ def search_services(request):
     # Comprobamos si el usuario tiene una suscripción y su tipo
     subscription_user = SubscriptionUser.objects.filter(user=user).first()
     
-    if subscription_user:
-        subscription = subscription_user.subscription
-    else:
-        subscription = None  # Si no hay suscripción, consideramos la opción gratuita
-
     # Lógica para la búsqueda de servicios
     services = []
     false_search = True
@@ -254,7 +250,7 @@ def search_services(request):
             services = Service.objects.filter(keywords=keyword_obj)
 
             # Si es un plan gratuito, mostramos solo algunos servicios (limitados)
-            if subscription and subscription.is_free:
+            if subscription_user and subscription_user.is_free:
                 services = services[:5]  # Limitar la cantidad de servicios mostrados (por ejemplo, 5)
 
             false_search = not bool(services)  # Si no se encuentran servicios, indicamos que fue una búsqueda fallida
@@ -262,5 +258,4 @@ def search_services(request):
     return render(request, 'users/home_cliente.html', {
         'services': services, 
         'false_search': false_search, 
-        'subscription': subscription
     })

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2>Mis Trabajos</h2>
+  <h2>Mis Cotizaciones</h2>
   
   <table>
     <thead>
@@ -32,7 +32,10 @@
           </td>
           <td>
             {% if quotation.is_active %}
-              <a href="{% url 'jobs:quotation_detail_empleado' quotation.pk %}">Detalles</a>
+              <a href="{% url 'jobs:edit_quotation' quotation.pk %}">Ver/Modificar</a>
+              <a href="{% url 'jobs:quotation_detail' quotation.pk %}">Detalles</a>
+              <a>Eliminar</a>
+              <a>Finalizar</a>
             {% else %}
               Ya no está activa
             {% endif %}

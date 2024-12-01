@@ -2,65 +2,122 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import JobCreateForm
-from .models import Job, Quotation
-
-def job_list(request):
-    jobs = Job.objects.filter(is_active=True)
-    return render(request, 'jobs/job_list.html', {'jobs': jobs})
-
-def job_detail(request, job_id):
-    job = get_object_or_404(Job, id=job_id)
-    return render(request, 'jobs/job_detail.html', {'job': job})
+from .forms import QuotationForm, CounterOfferForm, EditQuotationForm
+from .models import  Quotation
+from apps.users.models import Service, User, Client
 
 @login_required
-def create_job(request):
-    """Vista para crear un nuevo trabajo por parte de un cliente."""
+def create_quotation(request, service_id):
+    # Obtienes el servicio con el ID proporcionado
+    service = Service.objects.get(id=service_id)
+
     if request.method == 'POST':
-        form = JobCreateForm(request.POST)
+        form = QuotationForm(request.POST)
         if form.is_valid():
-            # Asignamos el cliente que está creando el trabajo
-            job = form.save(commit=False)
-            job.client = request.user.client_profile  # Asociamos el trabajo al perfil del cliente
-            job.save()
-            return redirect('jobs:job_list')  # Redirige a la lista de trabajos
+            # Creas la cotización sin guardar (commit=False)
+            quotation = form.save(commit=False)
+            # Asignas el cliente relacionado con el usuario actual
+            quotation.client = Client.objects.get(user=request.user)
+            quotation.service = service  # El servicio asociado
+            quotation.save()  # Guardas la cotización
+            return redirect('jobs:list_quotations')  # Redirigir al cliente a una lista de sus cotizaciones
+
     else:
-        form = JobCreateForm()
+        form = QuotationForm()
 
-    return render(request, 'jobs/create_job.html', {'form': form})
+    return render(request, 'jobs/create_quotation.html', {'form': form, 'service': service})
 
-
-def quotation_detail(request, quotation_id):
-    """Vista para ver los detalles de una cotización."""
-    # Obtenemos la cotización de la base de datos
-    quotation = get_object_or_404(Quotation, id=quotation_id)
-
-    # Verificamos si el usuario actual es el trabajador que hizo la cotización
-    is_owner = quotation.worker.user == request.user
-
-    # Si es el cliente, mostramos información del trabajo
-    is_client = quotation.job.client.user == request.user
-
-    return render(request, 'jobs/quotation_detail.html', {
-        'quotation': quotation,
-        'is_owner': is_owner,
-        'is_client': is_client,
-    })
 
 @login_required
-def accept_or_reject_job(request, job_id):
-    job = get_object_or_404(Job, id=job_id)
+def edit_quotation(request, pk):
+    # Obtener la cotización a editar
+    quotation = get_object_or_404(Quotation, pk=pk)
+    
+    # Verifica si el usuario autenticado es el trabajador asociado a la cotización
+    if request.user != quotation.client.user:
+        # Si no es el trabajador, redirige a la lista de cotizaciones
+        return redirect('jobs:list_quotations')
 
+    # Si el usuario es un cliente, asignamos el cliente en caso de que se modifique
+    if request.user.role == 'cliente' and not quotation.client:
+        # Suponiendo que el cliente no se ha asignado correctamente, asignamos el cliente
+        quotation.client = Client.objects.get(user=request.user)
+    
     if request.method == 'POST':
-        action = request.POST.get('action')
-        if action == 'accept':
-            job.status = 'accepted'
-            job.save()
-            messages.success(request, 'Trabajo aceptado exitosamente.')
-        elif action == 'reject':
-            job.status = 'rejected'
-            job.save()
-            messages.success(request, 'Trabajo rechazado exitosamente.')
+        # Creamos el formulario con los datos actuales de la cotización
+        form = EditQuotationForm(request.POST, instance=quotation)
+        if form.is_valid():
+            # Guardamos los cambios en la cotización
+            form.save()
+            return redirect('jobs:quotation_detail', pk=quotation.pk)
+    else:
+        # Si es un GET, mostramos el formulario con la información de la cotización
+        form = EditQuotationForm(instance=quotation)
+    
+    # Renderizamos la plantilla con el formulario
+    return render(request, 'jobs/edit_quotation.html', {'form': form})
+@login_required
+def job_list(request):
+    quotations = Quotation.objects.filter(service__worker__user=request.user)
+    return render(request, 'jobs/job_list.html', {'quotations': quotations})
 
-        return redirect('job_list')  # Redirige a la lista de trabajos u otra página
-    return render(request, 'jobs/accept_reject_job.html', {'job': job})
+@login_required
+def list_quotations(request):
+    client = Client.objects.get(user=request.user)
+    quotations = Quotation.objects.filter(client=client)
+    return render(request, 'jobs/list_quotations.html', {'quotations': quotations})
+
+@login_required
+def quotation_detail(request, pk):
+    quotation = get_object_or_404(Quotation, pk=pk)
+    return render(request, 'jobs/quotation_detail.html', {'quotation': quotation})
+
+
+@login_required
+def quotation_detail_empleado(request, pk):
+    quotation = get_object_or_404(Quotation, pk=pk)
+    return render(request, 'jobs/quotation_detail_empleado.html', {'quotation': quotation})
+
+# @login_required
+# def counter_offer_quotation(request, quotation_id):
+#     quotation = Quotation.objects.get(id=quotation_id)
+
+#     # Solo el trabajador asociado a esta cotización puede hacer una contraoferta
+#     if request.user != quotation.worker.user:
+#         return redirect('users:profile')  # Redirigir si el trabajador no tiene permiso
+
+#     if request.method == 'POST':
+#         # Aquí puedes permitir que el trabajador ingrese su contraoferta (nuevo precio y tiempo estimado)
+#         new_price = request.POST['price']
+#         new_time_estimate = request.POST['time_estimate']
+
+#         # Actualizar la cotización con la contraoferta
+#         quotation.counter_offer = new_price
+#         quotation.counter_offer_accepted = False  # Marcar como pendiente de aceptación
+#         quotation.time_estimate = new_time_estimate
+#         quotation.save()
+
+#         return redirect('jobs:list_services')
+
+#     return render(request, 'users/counter_offer_quotation.html', {'quotation': quotation})
+
+
+# @login_required
+# def accept_counter_offer(request, quotation_id):
+#     quotation = Quotation.objects.get(id=quotation_id)
+
+#     # Solo el cliente asociado a esta cotización puede aceptarla
+#     if request.user != quotation.worker.user:
+#         return redirect('users:profile')
+
+#     if request.method == 'POST':
+#         if 'accept' in request.POST:
+#             quotation.counter_offer_accepted = True  # El cliente acepta la contraoferta
+#         elif 'reject' in request.POST:
+#             quotation.counter_offer_accepted = False  # El cliente rechaza la contraoferta
+
+#         quotation.save()
+
+#         return redirect('users:list_services')  # Redirigir al cliente
+
+#     return render(request, 'jobs/accept_counter_offer.html', {'quotation': quotation})

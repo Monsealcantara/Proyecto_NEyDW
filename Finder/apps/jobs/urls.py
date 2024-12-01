@@ -5,10 +5,10 @@ from . import views
 app_name = 'jobs'
 
 urlpatterns = [
-    path('', views.job_list, name='job_list'),  #mostrar trabajos
-    path('create/', views.create_job, name='create_job'),  # URL para crear un nuevo trabajo
-    path('<int:job_id>/', views.job_detail, name='job_detail'), #detalles del trabajo
-
-     path('quotation/<int:quotation_id>/', views.quotation_detail, name='quotation_detail'), # Ruta para ver los detalles de una cotización
-    path('job/<int:job_id>/accept-reject/', views.accept_or_reject_job, name='accept_reject_job'),
+    path('create_quotation/<int:service_id>/', views.create_quotation, name='create_quotation'),  # URL para crear un nuevo trabajo
+    path('edit_quotation/<int:pk>/', views.edit_quotation, name='edit_quotation'),
+    path('list_quotations/', views.list_quotations, name='list_quotations'),
+    path('job_list/', views.job_list, name='job_list'),  # URL para crear un nuevo trabajo
+    path('quotation_detail/<int:pk>/', views.quotation_detail, name='quotation_detail'),
+    path('quotation_detail_empleado/<int:pk>/', views.quotation_detail_empleado, name='quotation_detail_empleado'),
 ]
