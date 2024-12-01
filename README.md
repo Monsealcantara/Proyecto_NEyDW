@@ -36,7 +36,7 @@ Configurar archivo .env (crear un archivo '.env' en la misma carpeta del "manage
 
 Aplicamos migraciones
 
-    python manage.py makemigrations users jobs materials subscriptions notifications chat
+    python manage.py makemigrations users jobs materials subscriptions notifications chat venta carrito
     python manage.py migrate
 
 Creamos un superusurio
