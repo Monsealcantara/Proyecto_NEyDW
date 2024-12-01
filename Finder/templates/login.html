@@ -30,7 +30,9 @@
                     <button type="button" id="togglePassword" class="toggle-password">🙈</button>
                 </div>
     
-                <div class="recordar">¿Contraseña olvidada?</div>
+                <div class="recordar">
+                    <p><a href="{% url 'password_reset' %}">Olvidé mi contraseña</a></p>
+                </div>
                 <input type="submit" value="Iniciar sesión">
                 <p><a class="recordar" href="{% url 'register' %}">Registrarse</a></p>
             </form>
