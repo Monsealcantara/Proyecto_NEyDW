@@ -1,0 +1,63 @@
+/* Contenedor de las cotizaciones */
+.cotizaciones-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+
+/* Encabezado */
+h2 {
+    text-align: center;
+    color: #007bff; /* Azul principal */
+    margin-bottom: 30px;
+}
+
+/* Estilo para la tabla */
+.cotizaciones-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cotizaciones-table th, .cotizaciones-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #007bff; /* Borde azul */
+}
+
+.cotizaciones-table th {
+    background-color: #e6f2ff; /* Azul claro */
+    color: #007bff;
+}
+
+.cotizaciones-table td {
+    background-color: #f8f9fc;
+}
+
+/* Estilos para los enlaces de acción */
+.cotizacion-actions a,
+.cotizacion-actions .action-link {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.cotizacion-actions a:hover,
+.cotizacion-actions .action-link:hover {
+    color: #0056b3; /* Azul más oscuro en hover */
+    text-decoration: underline;
+}
+
+/* Estilo de la columna de estado */
+.cotizaciones-table td:nth-child(5) {
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.cotizacion-actions span {
+    color: #ccc;
+    font-style: italic;
+}

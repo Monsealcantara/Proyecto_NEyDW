@@ -1,14 +1,20 @@
 {% extends 'base.html' %}
 
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/jobs/edit_quotation.css' %}">
+{% endblock %}
+
 {% block content %}
-  <h2>Actualizar Cotización</h2>
+<div class="content">
+  <h1>Actualizar Cotización</h1>
   
   <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}  <!-- Muestra los campos del formulario -->
     
-    <button type="submit"> Editar </button>
+    <button type="submit"> Guardar </button>
+    <a href="{% url 'jobs:list_quotations' %}" class="crear-btn">Regresar</a>
   </form>
-
-  <a href="{% url 'jobs:list_quotations' %}">Regresar</a>
+</div>
 {% endblock %}

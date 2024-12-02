@@ -1,0 +1,77 @@
+/* Estilo para el contenedor de la cotización */
+.cotizacion-detail {
+    background-color: #f8f9fc; /* Fondo azul claro */
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-top: 30px;
+}
+
+/* Estilo para los encabezados */
+.cotizacion-detail h2 {
+    text-align: center;
+    color: #007bff; /* Azul principal */
+    margin-bottom: 20px;
+}
+
+/* Estilo para los párrafos dentro del detalle */
+.cotizacion-detail p {
+    color: #333; /* Texto oscuro */
+    line-height: 1.6;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+/* Estilo para los enlaces de acción (aceptar, rechazar, finalizar) */
+.cotizacion-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.cotizacion-actions a {
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+}
+
+.cotizacion-actions .btn-aceptar {
+    background-color: #1983e6; /* Azul secundario */
+    color: #fff;
+    border: none;
+}
+
+.cotizacion-actions .btn-rechazar {
+    background-color: #ff5733; /* Rojo para rechazo */
+    color: #fff;
+    border: none;
+}
+
+.cotizacion-actions .btn-finalizar {
+    background-color: #28a745; /* Verde para finalizar */
+    color: #fff;
+    border: none;
+}
+
+.cotizacion-actions a:hover {
+    opacity: 0.9;
+}
+
+/* Estilo para el link que volvería a la lista de cotizaciones (si existiera) */
+.cotizacion-detail a {
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.cotizacion-detail a:hover {
+    opacity: 0.8;
+}

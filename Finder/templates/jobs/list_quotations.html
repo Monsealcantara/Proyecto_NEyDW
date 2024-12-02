@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/jobs/list_quotations.css' %}">
+{% endblock %}
+
 {% block content %}
+<div class="cotizaciones-container">
   <h2>Mis Cotizaciones</h2>
   
-  <table>
+  <table class="cotizaciones-table">
     <thead>
       <tr>
         <th>Trabajador</th>
@@ -31,11 +37,11 @@
               Rechazada
             {% endif %}
           </td>
-          <td>
+          <td class="cotizacion-actions">
               {% if quotation.is_active %}
-                <a href="{% url 'jobs:quotation_detail' quotation.pk %}">Detalles</a>
+                <a href="{% url 'jobs:quotation_detail' quotation.pk %}" class="action-link">Detalles</a>
                 {% if not quotation.accepted and not quotation.counter_offer_accepted %}
-                  <a href="{% url 'jobs:edit_quotation' quotation.pk %}">Ver/Modificar</a>
+                  <a href="{% url 'jobs:edit_quotation' quotation.pk %}" class="action-link">Ver/Modificar</a>
                   <a href="{% url 'jobs:delete_quotation' quotation.pk %}" onclick="return confirm('¿Estás seguro de que deseas eliminar esta cotización?')">Eliminar</a>
                 {% endif %}
               {% else %}
@@ -59,4 +65,5 @@
       {% endfor %}
     </tbody>
   </table>
+</div>
 {% endblock %}

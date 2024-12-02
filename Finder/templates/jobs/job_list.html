@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
-
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/jobs/job_list.css' %}">
+{% endblock %}
 {% block content %}
+<div class="content">
   <h2>Mis Trabajos</h2>
   
-  <table>
+  <table class="quotations-table">
     <thead>
       <tr>
         <th>Cliente</th>
@@ -35,7 +39,7 @@
           </td>
           <td>
             {% if quotation.is_active %}
-              <a href="{% url 'jobs:quotation_detail_empleado' quotation.pk %}">Detalles</a>
+              <a href="{% url 'jobs:quotation_detail_empleado' quotation.pk %}" class="btn-view">Detalles</a>
             {% else %}
               Ya no está activa
             {% endif %}
@@ -57,4 +61,5 @@
       {% endfor %}
     </tbody>
   </table>
+  <div>
 {% endblock %}
