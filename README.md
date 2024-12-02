@@ -46,3 +46,29 @@ Creamos un superusurio
 Corremos proyecto 
     
     python manage.py runserver	
+    
+    
+Para entrar al administrador es con 
+
+    http://127.0.0.1:8000/admin/
+
+Crear subscripciones antes de registrar archivos
+
+    plan_name   price
+1    PREMIUM     200
+2    GRATUITA    0
+
+Crear el usuario empresa
+Opcion 1
+    >Entrar al administrador >USERS >Usuarios >AGREGAR USUARIO
+
+    Llenar los campos, solo en contraseña poner:
+
+    pbkdf2_sha256$870000$3UFd66pX0ZIl237aNl60Ro$fyMmmADJh0QHH3WWxTpkWsupFRjtmIMXhcqWYz5ii+0=
+
+    la contraseña sera empresa
+    
+Opcion2
+    Registrar en el sistema como cliente o traajador 
+    >Entrar al administrador >USERS >Usuarios > usuario creado
+    Editar el rol a empresa
