@@ -23,9 +23,13 @@ class Quotation(models.Model):
 
 # Guarda las reseñas de los trabajos realizados.
 class Review(models.Model):
-    service = models.OneToOneField(Service, on_delete=models.CASCADE)
+    quotation = models.OneToOneField(Quotation, on_delete=models.CASCADE)
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE, related_name='reviews')
     client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name='reviews')
-    rating = models.PositiveSmallIntegerField()  # Rango: 1-5
+    rating = models.PositiveSmallIntegerField(blank=True, null=True)  # Rango: 1-5
+    status = models.TextField(default=True)
     comment = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)    
+    
+    def __str__(self):
+        return f"Calificacion de {self.client.user.username} para {self.service.name}"

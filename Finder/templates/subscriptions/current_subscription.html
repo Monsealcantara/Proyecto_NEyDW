@@ -1,16 +1,24 @@
-{% extends "base.html" %}
-
-{% block title %}Lista de Trabajos{% endblock %}
+{% extends 'base.html' %}
 
 {% block content %}
-    <h1>Tu Suscripción Actual</h1>
-    {% if subscription %}
-        <p>Plan: <strong>{{ subscription.plan_name }}</strong></p>
-        <p>Precio: ${{ subscription.price }}</p>
-        <p>Inicio: {{ subscription.start_date|date:"d-m-Y" }}</p>
-        <p>Fin: {{ subscription.end_date|date:"d-m-Y" }}</p>
+  <h2>Tu Suscripción Actual</h2>
+  
+  {% if subscription %}
+    <p>Plan: {{ subscription.suscription.plan_name }}</p>
+    <p>Precio: ${{ subscription.suscription.price }}</p>
+    <p>Fecha de inicio: {{ subscription.start_date }}</p>
+    <p>Fecha de finalización: {{ subscription.end_date }}</p>
+
+    {% if subscription.is_free %}
+      <p>Tu suscripción es gratuita.</p>
     {% else %}
-        <p>No tienes una suscripción activa.</p>
-        <a href="{% url 'subscriptions:subscription_list' %}">Seleccionar un plan</a>
+      <p>Tu suscripción es premium.</p>
     {% endif %}
-{% endblock %}
+  {% else %}
+    <p>No tienes una suscripción activa.</p>
+  {% endif %}
+
+  <a href="{% url 'subscriptions:subscription_list' %}">Cambiar suscripción</a>
+
+  <a href="{% url 'users:profile' %}">Regresar a perfil</a>
+  {% endblock %}

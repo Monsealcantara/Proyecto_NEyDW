@@ -1,8 +1,10 @@
 # chat/models.py
 from django.db import models
-from apps.users.models import User
+from apps.users.models import User, Service
+from apps.jobs.models import  Quotation
 
 class Chat(models.Model):
+    quotation = models.ForeignKey(Quotation, on_delete=models.CASCADE, null=True)
     participants = models.ManyToManyField(User)  # Los dos participantes del chat
     created_at = models.DateTimeField(auto_now_add=True)  # Fecha de creación del chat
     is_activate = models.BooleanField(default=True)

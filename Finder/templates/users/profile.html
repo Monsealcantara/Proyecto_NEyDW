@@ -20,7 +20,7 @@
             {% if  user.worker_profile %}
                 <li><a href="{% url 'jobs:job_list' %}">Trabajos</a></li>
             {% elif user.client_profile %}
-                <li><a href="{% url 'jobs:list_quotations' %}">Solicitar servicio</a></li>
+                <li><a href="{% url 'subscriptions:current_subscription' %}">Suscripción</a></li>
             {% endif %}
         </ul>
     </nav>

@@ -228,6 +228,7 @@ def delete_service(request, pk):
 
     return render(request, 'users/delete_service.html', {'users': service})
 
+@login_required
 def search_services(request):
     # Obtenemos la palabra clave de la búsqueda
     keyword = request.GET.get('keyword')
@@ -259,3 +260,17 @@ def search_services(request):
         'services': services, 
         'false_search': false_search, 
     })
+
+    
+@login_required
+def ver_perfil(request, pk):
+    # Obtener el usuario y su perfil de trabajador
+    user = User.objects.get(pk=pk)
+    
+    # Verificar si el usuario tiene un perfil de trabajador asociado
+    try:
+        worker_profile = user.worker_profile
+    except Worker.DoesNotExist:
+        worker_profile = None
+    
+    return render(request, 'users/ver_perfil.html', {'user': user, 'worker_profile': worker_profile})

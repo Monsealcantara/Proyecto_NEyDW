@@ -25,7 +25,7 @@
             {% for service in services %}
                 <li>{{ service.name }}</li>
                 <li>{{ service.description }}</li>
-                <li><a>Ver perfil</a></li>
+                <li><a href="{% url 'users:ver_perfil' service.worker.user.id %}">Ver perfil</a></li>
                 <li><a href="{% url 'jobs:create_quotation' service.id %}">Solicitar Servicio</a></li>                
             {% endfor %}
         </ul>    

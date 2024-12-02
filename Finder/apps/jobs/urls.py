@@ -18,4 +18,5 @@ urlpatterns = [
     path('aceptar_quotations/<int:pk>/', views.aceptar_quotations, name='aceptar_quotations'),
     path('rechazar_quotations_cliente/<int:pk>/', views.rechazar_quotations_cliente, name='rechazar_quotations_cliente'),
     path('aceptar_quotations_client/<int:pk>/', views.aceptar_quotations_client, name='aceptar_quotations_client'),
+    path('leave_review/<int:pk>/', views.leave_review, name='leave_review'),
 ]

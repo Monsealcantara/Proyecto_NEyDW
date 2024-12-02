@@ -20,7 +20,7 @@ class SubscriptionUser(models.Model):
     suscription = models.ForeignKey(Subscription, on_delete=models.CASCADE, related_name='subscriptions')
     start_date = models.DateField(auto_now_add=True)
     end_date = models.DateField(null=True, blank=True)
-    is_free = models.BooleanField(default=False)  # Determina si es un plan gratuito
+    is_free = models.BooleanField(default=True)  # Determina si es un plan gratuito
     
     def __str__(self):
         return f"Suscripción de {self.user.username} - {self.suscription.plan_name}"

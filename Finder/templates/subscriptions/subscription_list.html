@@ -1,20 +1,33 @@
-{% extends "base.html" %}
-
-{% block title %}Plan de Suscripcións{% endblock %}
+{% extends 'base.html' %}
 
 {% block content %}
-    <h1>Selecciona un Plan de Suscripción</h1>
-    <ul>
-        {% for plan in subscriptions %}
-        <li>
-            <strong>{{ plan.name }}</strong>: ${{ plan.price }}
-            <ul>
-                {% for benefit in plan.benefits %}
-                <li>{{ benefit }}</li>
-                {% endfor %}
-            </ul>
-            <a href="{% url 'subscriptions:subscribe' plan.name %}">Suscribirse</a>
-        </li>
-        {% endfor %}
-    </ul>
+  <h2>Planes de Suscripción</h2>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Plan</th>
+        <th>Precio</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for subscription in subscriptions %}
+        <tr {% if user_subscription and user_subscription.suscription == subscription %} style="background-color: #e0e0e0;" {% endif %}>
+          <td>{{ subscription.plan_name }}</td>
+          <td>${{ subscription.price }}</td>
+          <td>
+            {% if user_subscription and user_subscription.suscription == subscription %}
+              <span>Tu suscripción actual</span>
+            {% else %}
+              <a href="{% url 'subscriptions:subscribe' subscription.plan_name %}">Cambiar a {{ subscription.plan_name }}</a>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+
+      <a href="{% url 'subscriptions:current_subscription'%}">Regresar</a>
+
+    </tbody>
+  </table>
 {% endblock %}

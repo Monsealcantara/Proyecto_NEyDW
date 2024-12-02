@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>No tienes una suscripción activa.</h2>
+  <a href="{% url 'subscriptions:subscription_list' %}">Ver planes disponibles</a>
+{% endblock %}

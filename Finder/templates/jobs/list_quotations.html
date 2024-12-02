@@ -8,9 +8,11 @@
       <tr>
         <th>Trabajador</th>
         <th>Servicio</th>
-        <th>Descripción</th>         <th>Presupuesto</th>
+        <th>Descripción</th>         
+        <th>Presupuesto</th>
         <th>Estado</th>
         <th>Acción</th>
+        <th>Reseña</th>  <!-- Nueva columna para mostrar la reseña -->
       </tr>
     </thead>
     <tbody>
@@ -32,13 +34,26 @@
           <td>
               {% if quotation.is_active %}
                 <a href="{% url 'jobs:quotation_detail' quotation.pk %}">Detalles</a>
-                {% if not quotation.accepted and not quotation.counter_offer_accepted  %}
+                {% if not quotation.accepted and not quotation.counter_offer_accepted %}
                   <a href="{% url 'jobs:edit_quotation' quotation.pk %}">Ver/Modificar</a>
                   <a href="{% url 'jobs:delete_quotation' quotation.pk %}" onclick="return confirm('¿Estás seguro de que deseas eliminar esta cotización?')">Eliminar</a>
                 {% endif %}
               {% else %}
                 Ya no está activa
               {% endif %}
+          </td>
+          <td>
+            {% if quotation.review_status == 'pending' %}
+              <a href="{% url 'jobs:leave_review' quotation.pk %}">Dejar reseña</a>
+            {% elif quotation.review_status == 'reviewed' %}
+              <div>
+                <span>Reseña dejada:</span>
+                <p><strong>Calificación:</strong> {{ quotation.review.rating }} / 5</p>
+                <p><strong>Comentario:</strong> {{ quotation.review.comment }}</p>
+              </div>
+            {% else %}
+              <span>No disponible</span>
+            {% endif %}
           </td>
         </tr>
       {% endfor %}
