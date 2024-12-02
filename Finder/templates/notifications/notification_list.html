@@ -1,20 +1,25 @@
 {% extends "base.html" %}
 
 {% block title %}Notificaciones{% endblock %}
-
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/notifications/notification_list.css' %}">
+{% endblock %}
 {% block content %}
+<div class="notifications-container">
     <h1>Tus Notificaciones</h1>
-    <ul>
+    <ul class="notifications-list">
         {% for notification in notifications %}
-        <li>
+        <li class="notification-item">
             <strong>{{ notification.message }}</strong> 
-            ({{ notification.created_at|date:"d-m-Y H:i" }})
+            <span class="notification-date">({{ notification.created_at|date:"d-m-Y H:i" }})</span>
             {% if not notification.is_read %}
-                <a href="{% url 'notifications:mark_as_read' notification.id %}">Marcar como leída</a>
+                <a href="{% url 'notifications:mark_as_read' notification.id %}" class="btn-mark-read">Marcar como leída</a>
             {% else %}
-                <span>Leída</span>
+                <span class="notification-read">Leída</span>
             {% endif %}
         </li>
         {% endfor %}
     </ul>
+</div>
 {% endblock %}

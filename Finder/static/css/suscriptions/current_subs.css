@@ -1,0 +1,52 @@
+/* Contenedor principal de la suscripción */
+.subscription-container {
+    background-color: #f8f9fc; /* Fondo claro para la sección */
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Título de la sección */
+.subscription-container h2 {
+    text-align: center;
+    color: #007bff; /* Azul principal */
+    margin-bottom: 20px;
+}
+
+/* Detalles de la suscripción */
+.subscription-details p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333; /* Texto estándar */
+}
+
+/* Estilo para los botones de acción */
+.subscription-actions a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    margin-right: 10px;
+    background-color: #007bff; /* Azul principal */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover para los botones */
+.subscription-actions a:hover {
+    background-color: #0056b3; /* Azul oscuro para el hover */
+}
+
+/* Estilo para los enlaces dentro de la suscripción */
+.subscription-details p strong {
+    color: #007bff; /* Resaltar las etiquetas con azul */
+}
+
+/* Estilo para las alertas de suscripción */
+.subscription-container p {
+    font-size: 16px;
+    color: #555; /* Texto estándar */
+}

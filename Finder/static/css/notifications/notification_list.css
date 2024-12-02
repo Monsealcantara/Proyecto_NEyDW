@@ -1,0 +1,67 @@
+/* Estilo general para la página de notificaciones */
+.notifications-container {
+    background-color: #f8f9fc; /* Fondo claro */
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo para el título */
+h1 {
+    text-align: center;
+    color: #007bff; /* Azul principal */
+    margin-bottom: 20px;
+}
+
+/* Estilo para la lista de notificaciones */
+.notifications-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilo para cada item de notificación */
+.notification-item {
+    background-color: #e6f2ff; /* Fondo azul claro */
+    border: 1px solid #007bff; /* Borde azul */
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+/* Estilo para la fecha de la notificación */
+.notification-date {
+    font-size: 0.9em;
+    color: #666; /* Gris claro */
+    margin-left: 10px;
+}
+
+/* Estilo para el enlace de marcar como leída */
+.btn-mark-read {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #e6f2ff;
+    border-radius: 5px;
+    border: 1px solid #007bff;
+    transition: background-color 0.3s;
+}
+
+.btn-mark-read:hover {
+    background-color: #cce0ff;
+}
+
+/* Estilo para el estado "Leída" */
+.notification-read {
+    color: #28a745; /* Verde para indicar éxito */
+    font-weight: bold;
+}
+
+/* Aseguramos que no haya subrayado en los enlaces */
+a {
+    text-decoration: none;
+}

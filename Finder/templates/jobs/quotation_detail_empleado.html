@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
-
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/jobs/quo_detail_empleado.css' %}">
+{% endblock %}
 {% block content %}
+<div class="quotation-detail">
   <h2>Detalle de Cotización</h2>
   
+  <div class="quotation-info">
   <p><strong>Servicio:</strong> {{ quotation.service.name }}</p>
   <p><strong>Descripción:</strong> {{ quotation.description }}</p>
   <p><strong>Presupuesto Inicial:</strong> {{ quotation.budget }}</p>
@@ -16,14 +21,17 @@
   {% elif quotation.accepted %}
     <p><strong>Estado:</strong> Oferta Aceptada</p>
   {% elif is_active and not quotation.accepted %}
+  <div class="quotation-info">
     <p><strong>Estado:</strong> Oferta Rechazada</p>
   {% elif not quotation.counter_offer and not quotation.counter_offer_accepted %}
-    <a href="{% url 'jobs:contraofertar_quotations' quotation.id %}">Contraofertar</a>
-    <a href="{% url 'jobs:aceptar_quotations' quotation.id %}">Aceptar</a>
-    <a href="{% url 'jobs:rechazar_quotations' quotation.id %}">Rechazar</a>
+    <a href="{% url 'jobs:contraofertar_quotations' quotation.id %}" class="btn-back">Contraofertar</a>
+    <a href="{% url 'jobs:aceptar_quotations' quotation.id %}" class="btn-back">Aceptar</a>
+    <a href="{% url 'jobs:rechazar_quotations' quotation.id %}" class="btn-back">Rechazar</a>
+    <a href="{% url 'jobs:job_list' %}" class="btn-back">Regresar</a>
   {% endif %}
+  </div>
 
-  <a href="{% url 'jobs:job_list' %}">Regresar</a>
+</div>
  {% endblock %}
 
  

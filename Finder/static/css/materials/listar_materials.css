@@ -1,0 +1,77 @@
+/* Estilos generales para la lista de productos */
+.product-list {
+    flex-grow: 1; /* Esto asegura que el contenido crezca y ocupe el espacio restante */
+    padding-bottom: 60px; /* Agrega espacio adicional en la parte inferior */
+    max-width: 1200px; /* Limita el ancho del contenedor para que no ocupe toda la pantalla */
+    margin: 0 auto; /* Centra el contenido en la pantalla */
+}
+.product-item {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8f9fc; /* Fondo suave */
+    border-radius: 8px;
+    margin: 15px 0;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-5px); /* Efecto de hover */
+}
+
+.product-details {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.product-details strong {
+    font-size: 1.2em;
+    color: #007bff; /* Azul principal */
+}
+
+.product-details p {
+    font-size: 0.9em;
+    color: #333;
+}
+
+.product-details .btn-add-to-cart {
+    display: inline-block;
+    background-color: #007bff; /* Azul para botón */
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.product-details .btn-add-to-cart:hover {
+    background-color: #0056b3; /* Azul oscuro al pasar el cursor */
+}
+
+.product-details .out-of-stock {
+    display: inline-block;
+    background-color: #e0e0e0; /* Gris para productos agotados */
+    color: #999;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.product-image {
+    text-align: center;
+    max-width: 120px;
+}
+
+.product-image img {
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-image p {
+    color: #999;
+    font-size: 0.9em;
+}

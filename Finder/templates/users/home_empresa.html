@@ -1,37 +1,49 @@
 {% extends "base.html" %}
 
 {% block title %}Inicio{% endblock %}
-
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/users/homeEmpresa.css' %}">
+{% endblock %}
 {% block content %}
+<div class="dashboard-container">
     <h1>Bienvenido, {{ user.username }}</h1>
     <p><strong>Rol:</strong> {{ user.role }}</p>
     <p><strong>Email:</strong> {{ user.email }}</p>
     <h2>Productos</h2>
 
-    <a href="{% url 'materials:agregar_material' %}">Agregar Producto</a> 
+    <a href="{% url 'materials:agregar_material' %}" class="btn btn-primary">Agregar Producto</a> 
 
-    <br>
+    <br>   <br>
     {% if materials %}
+    <ul class="product-list">
         {% for material in materials %}
-        <li>
-                {{ material.name }} 
-                {{ material.price }}
-                {{ material.description }}
-                {{ material.stock }}
+        <li class="product-item">
+            <div class="product-info">
+                <strong>{{ material.name }}</strong>
+                <p>Precio: ${{ material.price }}</p>
+                <p>Descripción: {{ material.description }}</p>
+                <p>Stock: {{ material.stock }}</p>
+            
+
                 {%if material.imagen%}
                     <td>
-                        <img src="{{material.imagen.url}}" width="100" height="100"></img>
+                        <img src="{{material.imagen.url}}" width="100" height="100" alt="Imagen del producto" class="product-image"></img>
                     </td> 
                 {%else%}
                     <td> Imagen no disponible </td>
                 {%endif%}
-                <a href="{% url 'materials:editar_material' material.id %}">Editar</a> - 
-                <a href="{% url 'materials:eliminar_material' material.id %}">Eliminar</a>
+            </div>
+            <div class="product-actions">
+                <a href="{% url 'materials:editar_material' material.id %}" class="btn btn-edit">Editar</a> - 
+                <a href="{% url 'materials:eliminar_material' material.id %}" class="btn btn-edit">Eliminar</a>
+            </div>
             </li>
+        </ul>
         {% endfor %}
     {% else %}
         Por el momento no hay producto
     {% endif %}
-    
+</div> 
 
 {% endblock %}

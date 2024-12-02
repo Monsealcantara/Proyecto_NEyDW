@@ -1,23 +1,27 @@
 {% extends "base.html" %}
-
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/carrito/ver_carrito.css' %}">
+{% endblock %}
 {% block title %}Productos Disponibles{% endblock %}
 
 {% block content %}
-<ul>
+<div class="cart-container">
+<ul class="cart-items">
     {% for item in items_carrito %}
-    <li>
+    <li class="cart-item">
         {{ item.producto.name }} - Cantidad: {{ item.cantidad }} - Precio: {{ item.producto.price }}
-        <form action="{% url 'carrito:eliminar_producto_carrito' item.id %}" method="post">
+        <form action="{% url 'carrito:eliminar_producto_carrito' item.id %}" method="post" class="cart-actions">
             {% csrf_token %}
-            <button type="submit">Eliminar</button>
-            <button><a href="{% url 'carrito:incrementar_cantidad_producto_carrito' item.id %}">mas</a></button>
-            <button><a href="{% url 'carrito:decrementar_cantidad_producto_carrito' item.id %}">menos</a></button>     
+            <button type="submit"  class="btn-remove">Eliminar</button>
+            <button class="btn-increase"><a href="{% url 'carrito:incrementar_cantidad_producto_carrito' item.id %}" class="btn-link">mas</a></button>
+            <button class="btn-decrease"><a href="{% url 'carrito:decrementar_cantidad_producto_carrito' item.id %}" class="btn-link">menos</a></button>     
         </form>
                
     </li>
     {% endfor %}
-</ul>
+</ul class="total">
 <p>Total: {{ total }}</p>
-<a href="{% url 'venta:realizar_compra' %}">Completar Compra</a>
-
+<a href="{% url 'venta:realizar_compra' %}" class="btn-complete">Completar Compra</a>
+</div>
 {% endblock %}

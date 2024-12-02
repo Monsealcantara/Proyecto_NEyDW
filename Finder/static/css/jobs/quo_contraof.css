@@ -1,0 +1,78 @@
+/* Estilo general para la página de contraoferta */
+.counteroffer {
+    background-color: #f8f9fc; /* Fondo claro */
+    flex-grow: 1;
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding-bottom: 60px;
+}
+
+
+/* Estilo para el título principal */
+.counteroffer h2 {
+    color: #007bff; /* Azul principal */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Estilo para los formularios */
+form {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Estilo para los botones principales */
+button[type="submit"] {
+    background-color: #007bff; /* Azul principal */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: auto;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Azul oscuro en hover */
+}
+
+/* Estilo para el enlace 'Regresar' */
+a.btn-link {
+    display: inline-block;
+    color: #007bff; /* Azul */
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    border: 1px solid #007bff; /* Borde azul */
+    transition: background-color 0.3s ease;
+}
+
+a.btn-link:hover {
+    background-color: #e6f2ff; /* Fondo azul claro en hover */
+    border-color: #0056b3; /* Borde azul oscuro */
+}
+
+/* Estilos para los campos del formulario */
+form input[type="text"], form input[type="number"], form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #007bff; /* Borde azul */
+    border-radius: 5px;
+    background-color: #f1f8ff; /* Fondo claro */
+    font-size: 16px;
+}
+
+form input[type="text"]:focus, form input[type="number"]:focus, form select:focus, form textarea:focus {
+    border-color: #0056b3; /* Azul oscuro en foco */
+    outline: none;
+}

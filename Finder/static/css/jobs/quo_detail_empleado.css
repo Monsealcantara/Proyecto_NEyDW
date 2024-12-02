@@ -1,0 +1,60 @@
+/* Estilo general para el detalle de cotización */
+.quotation-detail {
+    flex-grow: 1;
+    background-color: #f8f9fc; /* Fondo claro */
+    padding: 30px;
+    border-radius: 8px;
+    padding-bottom: 60px; 
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+h2 {
+    text-align: center;
+    color: #007bff; /* Azul principal */
+    margin-bottom: 30px;
+}
+
+/* Información de la cotización */
+.quotation-info p {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.quotation-info p strong {
+    color: #007bff; /* Resaltar etiquetas */
+}
+
+/* Estado de la cotización */
+.quotation-info p {
+    background-color: #e6f2ff; /* Azul claro */
+    border-left: 4px solid #007bff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Acciones */
+.actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-back {
+    background-color: #007bff; /* Azul principal */
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.btn-back:hover {
+    background-color: #0056b3; /* Azul oscuro */
+    transition: background-color 0.3s;
+}

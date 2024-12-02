@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
-
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/suscriptions/subscription_list.css' %}">
+{% endblock %}
 {% block content %}
+<div class="subscription-container">
   <h2>Planes de Suscripción</h2>
   
-  <table>
+  <table class="subscription-table">
     <thead>
       <tr>
         <th>Plan</th>
@@ -18,15 +22,15 @@
           <td>${{ subscription.price }}</td>
           <td>
             {% if user_subscription and user_subscription.suscription == subscription %}
-              <span>Tu suscripción actual</span>
+              <span class="current-plan">Tu suscripción actual</span>
             {% else %}
-              <a href="{% url 'subscriptions:subscribe' subscription.plan_name %}">Cambiar a {{ subscription.plan_name }}</a>
+              <a href="{% url 'subscriptions:subscribe' subscription.plan_name %}" class="change-plan" class="change-plan">Cambiar a {{ subscription.plan_name }}</a>
             {% endif %}
           </td>
         </tr>
       {% endfor %}
 
-      <a href="{% url 'subscriptions:current_subscription'%}">Regresar</a>
+      <a href="{% url 'subscriptions:current_subscription'%}" class="back-link">Regresar</a>
 
     </tbody>
   </table>

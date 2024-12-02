@@ -1,11 +1,15 @@
 {% extends "base.html" %}
-
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/chat/chat_detail.css' %}">
+{% endblock %}
 {% block title %}Chat con {{ other_participant.username }}{% endblock %}
 
 {% block content %}
+<div class="chat-container">
 <h1>Chat con {{ other_participant.username }}</h1>
 
-<div id="messages">
+<div id="messages" class="messages-container">
     {% for message in messages %}
         <div class="message {% if message.sender == request.user %}sent{% else %}received{% endif %}">
             <strong>{{ message.sender.username }}:</strong> {{ message.content }}
@@ -14,9 +18,10 @@
     {% endfor %}
 </div>
 
-<form method="POST">
+<form method="POST" class="chat-form">
     {% csrf_token %}
-    <textarea name="content" placeholder="Escribe tu mensaje..."></textarea>
-    <button type="submit">Enviar</button>
+    <textarea name="content" placeholder="Escribe tu mensaje..." class="message-input"></textarea>
+    <button type="submit" class="send-button">Enviar</button>
 </form>
+</div>
 {% endblock %}

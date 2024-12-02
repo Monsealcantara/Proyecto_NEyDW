@@ -1,37 +1,42 @@
 {% extends "base.html" %}
 
 {% block title %}Chats{% endblock %}
-
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/chat/chat_list.css' %}">
+{% endblock %}
 {% block content %}
+<div class="chat-container">
 <h1>Mis Chats</h1>
 
-<ul>
+<ul class="chat-list">
     {% if chats %}
         {% for chat in chats %}
             <li>
                 {% if chat.is_activate %}
-                <a href="{% url 'chat:chat_detail' chat.id %}">
+                <a href="{% url 'chat:chat_detail' chat.id %}" class="chat-link">
                     Chat con: {% for participant in chat.participants.all %}
                         {% if participant != request.user %}
                             {{ participant.username }}
                         {% endif %}
                     {% endfor %}
                 </a>
-                <p>Activo</p>
+                <p class="status active-status">Activo</p>
                 {%else%}
-                <p>
+                <p class="chat-text">
                     Chat con: {% for participant in chat.participants.all %}
                         {% if participant != request.user %}
                             {{ participant.username }}
                         {% endif %}
                     {% endfor %}
                 </p>
-                <p>Finalizado</p>
+                <p class="status inactive-status">Finalizado</p>
                 {% endif %}
             </li>
         {% endfor %}
     {% else %}
-        <p>Por el momento no hay chats</p>
+        <p class="no-chats">Por el momento no hay chats</p>
     {% endif %}
 </ul>
+</div>
 {% endblock %}

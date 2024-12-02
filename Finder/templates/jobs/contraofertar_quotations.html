@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
-
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/jobs/quo_contraof.css' %}">
+{% endblock %}
 {% block content %}
+<div class="counteroffer">
   <h2>Contraoferta Propuesta de trabajo</h2>
   
   <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}  <!-- Muestra los campos del formulario -->
     
-    <button type="submit"> Contraofertar </button>
+    <button type="submit" class="btn-primary"> Contraofertar </button>
+    <a href="{% url 'jobs:quotation_detail_empleado' quotation.pk %}" class="btn-link">Regresar</a>
   </form>
-
-  <a href="{% url 'jobs:quotation_detail_empleado' quotation.pk %}">Regresar</a>
+</div>
+  
   {% endblock %}

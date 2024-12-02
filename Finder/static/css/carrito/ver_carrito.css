@@ -1,0 +1,97 @@
+/* Estilos generales para el contenedor del carrito */
+.cart-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fc;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-items {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .cart-item {
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Estilo para el botón de eliminar */
+  .btn-remove {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .btn-remove:hover {
+    background-color: #c82333;
+  }
+  
+  /* Estilos para los botones de aumentar/disminuir cantidad */
+  .btn-increase,
+  .btn-decrease {
+    background-color: #007bff;
+    color: rgb(255, 255, 255);
+  }
+  
+  .btn-increase:hover,
+  .btn-decrease:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo para el total del carrito */
+  .total {
+    font-size: 1.2em;
+    margin-top: 20px;
+    color: #333;
+  }
+  
+  /* Estilo para el botón de completar compra */
+  .btn-complete {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.1em;
+    margin-top: 20px;
+    text-decoration: none;
+  }
+  
+  .btn-complete:hover {
+    background-color: #218838;
+  }
+  
+  /* Estilo de los enlaces dentro de los botones */
+  .btn-link {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+  
+  .btn-link:hover {
+    text-decoration: underline;
+  }
+  

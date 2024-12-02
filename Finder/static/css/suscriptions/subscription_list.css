@@ -1,0 +1,65 @@
+/* Contenedor de la página */
+.subscription-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fc; /* Fondo claro */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #007bff; /* Azul principal */
+    margin-bottom: 20px;
+}
+
+/* Estilos para la tabla */
+.subscription-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.subscription-table th, .subscription-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.subscription-table th {
+    background-color: #007bff; /* Azul principal */
+    color: white;
+}
+
+.subscription-table tr.current-subscription {
+    background-color: #e0e0e0; /* Color de fondo para el plan activo */
+}
+
+/* Estilos para los enlaces y texto */
+.change-plan, .current-plan {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.change-plan:hover {
+    text-decoration: underline;
+}
+
+.current-plan {
+    font-style: italic;
+    color: #28a745; /* Verde para el plan activo */
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}

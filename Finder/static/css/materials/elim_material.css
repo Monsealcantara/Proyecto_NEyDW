@@ -1,0 +1,52 @@
+/* Contenedor principal para la página de eliminación */
+.delete-container {
+    flex-grow: 1; 
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto; /* Centra el contenido en la pantalla */
+    padding: 20px;
+    background-color: #f8f9fc; /* Fondo suave */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    text-align: center;
+}
+
+/* Título principal */
+.delete-container h1 {
+    font-size: 24px;
+    color: #007bff; /* Azul principal */
+    margin-bottom: 20px;
+}
+
+/* Estilo para los botones */
+button[type="submit"] {
+    background-color: #dc3545; /* Rojo para eliminar */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #c82333; /* Rojo más oscuro al pasar el mouse */
+}
+
+/* Estilo para el enlace de cancelar */
+.btn-cancel {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff; /* Azul para los enlaces */
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+}
+
+.btn-cancel:hover {
+    background-color: #007bff;
+    color: white;
+}
