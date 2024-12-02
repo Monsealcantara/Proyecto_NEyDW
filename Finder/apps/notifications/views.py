@@ -1,5 +1,5 @@
 # apps/notifications/views.py
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Notification
 
 def notification_list(request):

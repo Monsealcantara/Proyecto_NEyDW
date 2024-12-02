@@ -5,6 +5,7 @@ from django.contrib import messages
 from .forms import QuotationForm, CounterOfferForm, EditQuotationForm
 from .models import  Quotation
 from apps.users.models import Service, User, Client
+from apps.chat.models import Message, Chat
 from apps.notifications.models import Notification
 
 @login_required
@@ -21,8 +22,16 @@ def create_quotation(request, service_id):
             quotation.latitude = request.POST.get('latitude')
             quotation.longitude = request.POST.get('longitude')
             quotation.save()
-            return redirect('jobs:list_quotations')
 
+            # Crear una notificación para el cliente
+            notification_message = f"El cliente {request.user} ha creado una oferta de trabajo'."
+            Notification.objects.create(
+                user=quotation.service.worker.user,  # Enviamos la notificación al cliente que publicó el trabajo
+                message=notification_message,
+                is_read=False
+            ) 
+
+            return redirect('jobs:list_quotations')
     else:
         form = QuotationForm()
 
@@ -128,6 +137,15 @@ def rechazar_quotations(request, pk):
     # Cambiar el estado de is_active a False
     quotation.is_active = False
     quotation.save()
+
+    # Crear una notificación para el cliente
+    notification_message = f"El trabajador {quotation.service.worker.user.username} rechazo la propuesta para el trabajo '{quotation.service.name}'."
+    Notification.objects.create(
+        user=quotation.client.user,  # Enviamos la notificación al cliente que publicó el trabajo
+        message=notification_message,
+        is_read=False
+    )
+            
     messages.success(request, "Oferta rechazada correctamente.")
     return redirect('jobs:job_list')
 
@@ -143,6 +161,36 @@ def aceptar_quotations(request, pk):
     # Cambiar el estado de is_active a False
     quotation.accepted = True
     quotation.save()
+
+    # Crear un nuevo chat entre el cliente y el trabajador
+    chat = Chat.objects.create()
+    chat.participants.add(quotation.client.user, quotation.service.worker.user)
+
+    # Enviar un mensaje inicial en el chat
+    Message.objects.create(
+        chat=chat,
+        sender=quotation.service.worker.user,
+        receiver=quotation.client.user,
+        content="Hola, tu oferta ha sido aceptada. ¿Cómo podemos continuar?",
+        is_read=False
+    )
+    
+    # Crear una notificación para el cliente
+    notification_message = f"El trabajador {quotation.service.worker.user.username} acepto la propuesta para el trabajo '{quotation.service.name}'."
+    Notification.objects.create(
+        user=quotation.client.user,  # Enviamos la notificación al cliente que publicó el trabajo
+        message=notification_message,
+        is_read=False
+    )
+
+     # Crear una notificación para el cliente
+    notification_message = f"El trabajador {quotation.service.worker.user.username} ha iniciado un chat contigo."
+    Notification.objects.create(
+        user=quotation.client.user,  # Enviamos la notificación al cliente que publicó el trabajo
+        message=notification_message,
+        is_read=False
+    )
+
     messages.success(request, "Oferta aceptada correctamente.")
     return redirect('jobs:job_list')
 
@@ -158,6 +206,15 @@ def rechazar_quotations_cliente(request, pk):
     # Cambiar el estado de is_active a False
     quotation.is_active = False
     quotation.save()
+
+    # Crear una notificación para el cliente
+    notification_message = f"El cliente {quotation.client.user.username} rechazo la contraoferta para el trabajo '{quotation.service.name}'."
+    Notification.objects.create(
+        user=quotation.service.worker.user,  # Enviamos la notificación al cliente que publicó el trabajo
+        message=notification_message,
+        is_read=False
+    )
+
     messages.success(request, "Cotización rechazada correctamente.")
     return redirect('jobs:list_quotations')
 
@@ -173,6 +230,36 @@ def aceptar_quotations_client(request, pk):
     # Cambiar el estado de is_active a False
     quotation.counter_offer_accepted = True
     quotation.save()
+
+    # Crear un nuevo chat entre el cliente y el trabajador
+    chat = Chat.objects.create()
+    chat.participants.add(quotation.client.user, quotation.service.worker.user)
+
+    # Enviar un mensaje inicial en el chat
+    Message.objects.create(
+        chat=chat,
+        sender=quotation.client.user,
+        receiver=quotation.service.worker.user,
+        content="Hola, tu contraoferta ha sido aceptada. ¿Cómo podemos continuar?",
+        is_read=False
+    )
+
+    # Crear una notificación para el cliente
+    notification_message = f"El cliente {quotation.client.user.username} acepto la contraoferta para el trabajo '{quotation.service.name}'."
+    Notification.objects.create(
+        user=quotation.service.worker.user,  # Enviamos la notificación al cliente que publicó el trabajo
+        message=notification_message,
+        is_read=False
+    ) 
+
+    # Crear una notificación para el cliente
+    notification_message = f"El cliente {quotation.client.user.username} ha iniciado un chat contigo'."
+    Notification.objects.create(
+        user=quotation.service.worker.user,  # Enviamos la notificación al cliente que publicó el trabajo
+        message=notification_message,
+        is_read=False
+    ) 
+
     messages.success(request, "Cotización aceptada correctamente.")
     return redirect('jobs:list_quotations')
 
@@ -185,6 +272,14 @@ def finalize_quotation(request, pk):
     if request.user != quotation.client.user:
         messages.error(request, "No tienes permisos para finalizar esta cotización.")
         return redirect('jobs:list_quotations')
+
+    # Crear una notificación para el cliente
+    notification_message = f"El cliente {quotation.client.user.username} ha finalizado el trabajo '{quotation.service.name}'."
+    Notification.objects.create(
+        user=quotation.service.worker.user,  # Enviamos la notificación al cliente que publicó el trabajo
+        message=notification_message,
+        is_read=False
+    )
 
     # Cambiar el estado de is_active a False
     quotation.is_active = False

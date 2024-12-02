@@ -20,7 +20,7 @@
     {% endif %}
   {% elif quotation.accepted %}
     <p><strong>Estado:</strong> Aceptada</p>
-    <a href="{% url 'jobs:finalize_quotation' quotation.id %}">Aceptar</a>
+    <a href="{% url 'jobs:finalize_quotation' quotation.id %}">Finalizar</a>
   {% elif not quotation.is_active and not quotation.accepted %}
     <p><strong>Estado:</strong> Rechazada</p>
   {% else %}

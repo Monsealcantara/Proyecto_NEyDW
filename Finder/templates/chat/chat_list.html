@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Chats{% endblock %}
+
+{% block content %}
+<h1>Mis Chats</h1>
+
+<ul>
+    {% if chats %}
+        {% for chat in chats %}
+            <li>
+                {% if chat.is_activate %}
+                <a href="{% url 'chat:chat_detail' chat.id %}">
+                    Chat con: {% for participant in chat.participants.all %}
+                        {% if participant != request.user %}
+                            {{ participant.username }}
+                        {% endif %}
+                    {% endfor %}
+                </a>
+                <p>Activo</p>
+                {%else%}
+                <p>
+                    Chat con: {% for participant in chat.participants.all %}
+                        {% if participant != request.user %}
+                            {{ participant.username }}
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                <p>Finalizado</p>
+                {% endif %}
+            </li>
+        {% endfor %}
+    {% else %}
+        <p>Por el momento no hay chats</p>
+    {% endif %}
+</ul>
+{% endblock %}
