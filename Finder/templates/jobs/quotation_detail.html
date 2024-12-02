@@ -6,16 +6,26 @@
   <p><strong>Servicio:</strong> {{ quotation.service.name }}</p>
   <p><strong>Descripción:</strong> {{ quotation.description }}</p>
   <p><strong>Presupuesto Inicial:</strong> {{ quotation.budget }}</p>
-  <p><strong>Precio Final (Contraoferta):</strong> {{ quotation.price }}</p>
-  <p><strong>Tiempo Estimado:</strong> {{ quotation.time_estimate }}</p>
   
-  {% if quotation.accepted %}
+  {% if quotation.counter_offer  %}
+    <p><strong>Estado:</strong> Se ha enviado una contraoferta</p>
+    <p><strong>Precio (Contraoferta):</strong> {{ quotation.counter_offer }}</p>
+    <p><strong>Tiempo (Contraoferta):</strong> {{ quotation.time_estimate }}</p>
+    {% if not quotation.counter_offer_accepted  %}
+      <a href="{% url 'jobs:aceptar_quotations_client' quotation.id %}">Aceptar</a>
+      <a href="{% url 'jobs:rechazar_quotations_cliente' quotation.id %}">Rechazar</a>
+    {% else %}
+      <p><strong>Estado:</strong> Contraoferta Aceptada</p>
+      <a href="{% url 'jobs:finalize_quotation' quotation.id %}">Finalizar</a>
+    {% endif %}
+  {% elif quotation.accepted %}
     <p><strong>Estado:</strong> Aceptada</p>
-  {% elif quotation.is_active %}
-    <p><strong>Estado:</strong> Esperando respuesta</p>
-  {% else %}
+    <a href="{% url 'jobs:finalize_quotation' quotation.id %}">Aceptar</a>
+  {% elif not quotation.is_active and not quotation.accepted %}
     <p><strong>Estado:</strong> Rechazada</p>
+  {% else %}
+    <p><strong>Estado:</strong> Esperando respuesta</p>
   {% endif %}
-  
+    
   <a href="{% url 'jobs:list_quotations' %}">Volver a las cotizaciones</a>
 {% endblock %}

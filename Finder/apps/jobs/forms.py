@@ -14,7 +14,6 @@ class QuotationForm(forms.ModelForm):
             return 0  # Valor predeterminado
         return price
 
-
 class CounterOfferForm(forms.ModelForm):
     class Meta:
         model = Quotation

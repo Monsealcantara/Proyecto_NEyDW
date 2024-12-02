@@ -8,8 +8,7 @@
       <tr>
         <th>Trabajador</th>
         <th>Servicio</th>
-        <th>Descripción</th>
-        <th>Presupuesto</th>
+        <th>Descripción</th>         <th>Presupuesto</th>
         <th>Estado</th>
         <th>Acción</th>
       </tr>
@@ -22,7 +21,7 @@
           <td>{{ quotation.description }}</td>
           <td>{{ quotation.budget }}</td>
           <td>
-            {% if quotation.accepted %}
+            {% if quotation.accepted or quotation.counter_offer_accepted %}
               Aceptada
             {% elif quotation.is_active %}
               Esperando respuesta
@@ -31,14 +30,15 @@
             {% endif %}
           </td>
           <td>
-            {% if quotation.is_active %}
-              <a href="{% url 'jobs:edit_quotation' quotation.pk %}">Ver/Modificar</a>
-              <a href="{% url 'jobs:quotation_detail' quotation.pk %}">Detalles</a>
-              <a>Eliminar</a>
-              <a>Finalizar</a>
-            {% else %}
-              Ya no está activa
-            {% endif %}
+              {% if quotation.is_active %}
+                <a href="{% url 'jobs:quotation_detail' quotation.pk %}">Detalles</a>
+                {% if not quotation.accepted and not quotation.counter_offer_accepted  %}
+                  <a href="{% url 'jobs:edit_quotation' quotation.pk %}">Ver/Modificar</a>
+                  <a href="{% url 'jobs:delete_quotation' quotation.pk %}" onclick="return confirm('¿Estás seguro de que deseas eliminar esta cotización?')">Eliminar</a>
+                {% endif %}
+              {% else %}
+                Ya no está activa
+              {% endif %}
           </td>
         </tr>
       {% endfor %}

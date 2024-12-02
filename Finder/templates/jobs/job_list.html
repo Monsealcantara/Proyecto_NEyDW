@@ -6,7 +6,7 @@
   <table>
     <thead>
       <tr>
-        <th>Trabajador</th>
+        <th>Cliente</th>
         <th>Servicio</th>
         <th>Descripción</th>
         <th>Presupuesto</th>
@@ -17,17 +17,19 @@
     <tbody>
       {% for quotation in quotations %}
         <tr>
-          <td>{{ quotation.service.worker.user }}</td>
+          <td>{{ quotation.client }}</td>
           <td>{{ quotation.service.name }}</td>
           <td>{{ quotation.description }}</td>
           <td>{{ quotation.budget }}</td>
           <td>
             {% if quotation.accepted %}
               Aceptada
-            {% elif quotation.is_active %}
-              Esperando respuesta
-            {% else %}
-              Rechazada
+            {% elif quotation.is_active and not quotation.counter_offer_accepted %}
+              Pendiente por confirmar
+            {% elif quotation.is_active and quotation.counter_offer_accepted or quotation.accepted %}
+              Pendiente por finalizar
+            {% elif not quotation.is_active %}
+              Finalizada
             {% endif %}
           </td>
           <td>
