@@ -1,0 +1,84 @@
+/* Estilo para el encabezado principal */
+h1 {
+    text-align: center;
+    color: #007bff; /* Azul principal */
+    margin-bottom: 30px;
+}
+
+/* Estilo para el encabezado de los servicios encontrados */
+h2 {
+    color: #1983e6; /* Azul secundario */
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Estilo para los formularios */
+form {
+    text-align: center; /* Centrar el formulario */
+    margin-bottom: 30px; /* Separación de los servicios */
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #007bff; /* Borde azul */
+    border-radius: 5px;
+    width: 250px; /* Ajustar el ancho */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Azul principal */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+}
+
+/* Estilo para la lista de servicios */
+.lista-serv {
+    list-style-type: none; /* Eliminar los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    
+}
+
+.lista-serv {
+    background-color: #e6f2ff; /* Fondo azul claro */
+    border: 1px solid #007bff; /* Borde azul */
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0; /* Separación entre los elementos */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de los enlaces */
+.lista-serv a {
+    color: #007bff; /* Azul para los enlaces */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.lista-serv a:hover {
+    text-decoration: underline;
+}
+
+/* Espaciado y márgenes para los servicios */
+.lista-serv li > * {
+    margin-bottom: 10px; /* Separación entre los elementos dentro de cada servicio */
+}
+
+
+
+.content {
+    flex-grow: 1; /* Esto asegura que el contenido crezca y ocupe el espacio restante */
+    padding-bottom: 60px; /* Agrega espacio adicional en la parte inferior */
+    max-width: 1200px; /* Limita el ancho del contenedor para que no ocupe toda la pantalla */
+    margin: 0 auto; /* Centra el contenido en la pantalla */
+}

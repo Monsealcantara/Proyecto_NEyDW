@@ -20,6 +20,7 @@
     <!-- Mostrar los servicios encontrados -->
     {% if services %}
         <h2>Servicios encontrados:</h2>
+        <div>
         <ul class="lista-serv">
             {% for service in services %}
                 <li>{{ service.name }}</li>
@@ -27,7 +28,9 @@
                 <li><a>Ver perfil</a></li>
                 <li><a href="{% url 'jobs:create_quotation' service.id %}">Solicitar Servicio</a></li>                
             {% endfor %}
-        </ul>
+        </ul>    
+        </div>
+
     {% else %}
         {% if false_search %}
             <p>No se encontraron servicios.</p>

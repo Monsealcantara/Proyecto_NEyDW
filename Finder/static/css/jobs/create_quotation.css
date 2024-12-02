@@ -1,0 +1,100 @@
+/* Estilo para el encabezado principal */
+h2 {
+    text-align: center;
+    color: #007bff; /* Azul principal */
+    margin-bottom: 30px;
+}
+
+/* Estilo para los párrafos de información del trabajador */
+.worker-info {
+    background-color: #e6f2ff; /* Fondo azul claro para el bloque */
+    border: 1px solid #007bff; /* Borde azul */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px; /* Espacio entre el bloque y el formulario */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.worker-info p {
+    margin-bottom: 10px; /* Espacio entre los párrafos */
+    color: #333; /* Color de texto estándar */
+    line-height: 1.6;
+}
+
+/* Estilo para el formulario de cotización */
+form {
+    background-color: #f8f9fc; /* Fondo claro para el formulario */
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo para los labels del formulario */
+form label {
+    display: block;
+    font-weight: bold;
+    color: #007bff; /* Azul para las etiquetas */
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+/* Estilo para los inputs del formulario */
+form input[type="text"], form input[type="number"], form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px; /* Espacio debajo de cada input */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Estilo para el botón de enviar */
+form button {
+    background-color: #007bff; /* Azul para el botón */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+form button:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el cursor */
+}
+
+/* Enlace de "Volver a la lista de servicios" */
+
+
+a:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el cursor */
+}
+/* Botón para "Crear Nuevo Servicio" */
+.crear-btn {
+    align-self: flex-end;
+    display: inline-block;
+    padding: 7.5px 15px;
+    background-color: #007bff;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+/* Botón hover para "Crear Nuevo Servicio" */
+.crear-btn:hover {
+    background-color: #1983e6;
+}
+
+
+.content {
+    flex-grow: 1; /* Esto asegura que el contenido crezca y ocupe el espacio restante */
+    padding-bottom: 60px; /* Agrega espacio adicional en la parte inferior */
+    max-width: 1200px; /* Limita el ancho del contenedor para que no ocupe toda la pantalla */
+    margin: 0 auto; /* Centra el contenido en la pantalla */
+}

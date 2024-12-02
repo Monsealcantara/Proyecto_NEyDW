@@ -1,16 +1,25 @@
 {% extends 'base.html' %}
 
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/jobs/create_quotation.css' %}">
+{% endblock %}
+
 {% block content %}
+<div class="content">
   <h2>Crear Cotización</h2>
   
-  <p>{{ service.worker.user }}</p>
-  <p>{{ service.worker.profession }}</p>
-  <p>{{ service.worker.bio }}</p>
-  <p>{{ service.worker.gallery }}</p>
-  <p>{{ service.name.rating }}</p>
-  <p>{{ service.description }}</p>
+  <!-- Bloque con la información del trabajador -->
+  <div class="worker-info">
+    <p><strong>Usuario:</strong> {{ service.worker.user }}</p>
+    <p><strong>Profesión:</strong> {{ service.worker.profession }}</p>
+    <p><strong>Biografía:</strong> {{ service.worker.bio }}</p>
+    <p><strong>Galería:</strong> {{ service.worker.gallery }}</p>
+    <p><strong>Calificación:</strong> {{ service.name.rating }}</p>
+    <p><strong>Descripción del Servicio:</strong> {{ service.description }}</p>
+  </div>
 
-  <h3>Cotización</h3>
+  <h2>Cotización</h2>
   <form method="POST">
     {% csrf_token %}
     
@@ -25,9 +34,8 @@
     </div>
 
     <button type="submit">Crear Cotización</button>
+    <a href="{% url 'users:client_home' %}" class="crear-btn">Volver a inicio</a>
   </form>
-
-  <a href="{% url 'users:client_home' %}">Volver a inicio</a>
 
   <!-- Agregar el script de Google Maps -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8FLwKO0OD3Gn5NySsmhkL36ig_BmgFI8&callback=initMap&libraries=places" async defer></script>
@@ -69,4 +77,5 @@
     // Llama a la función de inicialización cuando la API de Google Maps cargue
     window.initMap = initMap;
   </script>
+</div>
 {% endblock %}
