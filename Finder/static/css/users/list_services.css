@@ -63,7 +63,6 @@ a:hover {
 .content {
     flex-grow: 1; /* Esto asegura que el contenido crezca y ocupe el espacio restante */
     padding-bottom: 60px; /* Agrega espacio adicional en la parte inferior */
-   
     max-width: 1200px; /* Limita el ancho del contenedor para que no ocupe toda la pantalla */
     margin: 0 auto; /* Centra el contenido en la pantalla */
 }

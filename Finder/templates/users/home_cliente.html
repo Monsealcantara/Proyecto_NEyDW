@@ -2,7 +2,13 @@
 
 {% block title %}Inicio{% endblock %}
 
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/users/homeCliente.css' %}">
+{% endblock %}
+
 {% block content %}
+<div class="content">
     <h1>Bienvenido, {{ user.username }}</h1>
 
     <!-- Formulario de búsqueda -->
@@ -14,7 +20,7 @@
     <!-- Mostrar los servicios encontrados -->
     {% if services %}
         <h2>Servicios encontrados:</h2>
-        <ul>
+        <ul class="lista-serv">
             {% for service in services %}
                 <li>{{ service.name }}</li>
                 <li>{{ service.description }}</li>
@@ -27,4 +33,5 @@
             <p>No se encontraron servicios.</p>
         {% endif %}
     {% endif %}
+    </div>
 {% endblock %}

@@ -1,16 +1,24 @@
 {% extends "base.html" %}
 
 {% block title %}Lista de Trabajos{% endblock %}
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/users/create_service.css' %}">
+{% endblock %}
 
 {% block content %}
 <!-- delete_service.html -->
+<div class="content">
 <h1>Eliminar Servicio</h1>
-<p>¿Estás seguro de que deseas eliminar el servicio "{{ service.name }}"?</p>
+
 <form method="POST">
   {% csrf_token %}
+  <p>¿Estás seguro de que deseas eliminar el servicio "{{ service.name }}"?</p>
   <button type="submit">Eliminar</button>
+  <a href="{% url 'users:list_services' %}" class="crear-btn">Volver a la lista de servicios</a>
 </form>
-<a href="{% url 'users:list_services' %}">Volver a la lista de servicios</a>
+</div>
+
 
 
 {% endblock %}
