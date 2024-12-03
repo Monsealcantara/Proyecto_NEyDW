@@ -1,0 +1,62 @@
+
+/* Contenedor del perfil */
+.perfil-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.perfil-container h1 {
+    text-align: center;
+    color: #1a73e8;  /* Azul primario */
+}
+
+/* Estilos para la sección de información del perfil */
+.perfil-info p,
+.worker-profile p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Sección de trabajador */
+.worker-profile {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e6f0ff;  /* Azul suave para diferenciar */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.worker-profile h3 {
+    color: #1a73e8;  /* Azul primario */
+    margin-bottom: 20px;
+}
+
+/* Imagen de trabajador */
+.worker-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: 10px 0;
+    border: 2px solid #1a73e8;  /* Bordes azules */
+}
+
+/* Estilo para cuando no se haya configurado un perfil de trabajador */
+.worker-profile p {
+    color: #666;
+}
+
+/* Botones o enlaces */
+a {
+    color: #1a73e8;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+

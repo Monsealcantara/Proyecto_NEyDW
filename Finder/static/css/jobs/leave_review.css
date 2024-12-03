@@ -1,0 +1,83 @@
+/* Estilo general de la página */
+.reseña-container {
+    flex-grow: 1; /* Esto asegura que el contenido crezca y ocupe el espacio restante */
+    padding-bottom: 60px; 
+    background-color: #f4f9fd; /* Fondo azul claro */
+    max-width: 600px;  /* Limitar el ancho */
+    margin: 30px auto; /* Centrado */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Título */
+.reseña-container h2 {
+    text-align: center;
+    color: #007bff; /* Azul principal */
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Estilo para el formulario */
+.reseña-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Agrupación de cada campo del formulario */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Etiquetas de los campos */
+.form-group label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Campos de entrada */
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #007bff; /* Borde azul */
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+}
+
+/* Estilo del textarea */
+.form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+/* Botón de envío */
+.btn-submit {
+    background-color: #007bff; /* Azul principal */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+}
+
+/* Estilo de los campos requeridos */
+input:required, textarea:required {
+    border-color: #007bff; /* Borde azul */
+}
+
+/* Espaciado general */
+.reseña-form {
+    gap: 15px;
+}
