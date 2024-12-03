@@ -22,6 +22,10 @@
     {% endfor %}
 </ul class="total">
 <p>Total: {{ total }}</p>
-<a href="{% url 'venta:realizar_compra' %}" class="btn-complete">Completar Compra</a>
+{% if items_carrito|length == 0 %}
+    <a class="btn-complete">Carro vacio</a>
+    {% else %}
+        <a href="{% url 'venta:realizar_compra' %}" class="btn-complete">Completar Compra</a>
+{% endif %}
 </div>
 {% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/venta/realizar_compra.css' %}">
+{% endblock %}
+
+{% block title %}Productos Disponibles{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>De click en aceptar para finalizar la compra</h1>
+    <p>Estimado cliente revise sus productos seleccionados.</p>
+    <a href="{% url 'carrito:ver_carrito' %}">Aceptar</a>
+</div>
+{% endblock %}
