@@ -1,0 +1,75 @@
+/* Estilo para el formulario */
+form {
+    background-color: #f8f9fc; /* Fondo claro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Estilo para las etiquetas */
+form label {
+    display: block;
+    font-weight: bold;
+    color: #007bff; /* Azul para las etiquetas */
+    margin-bottom: 8px;
+}
+
+/* Estilo para los inputs, textarea y select */
+form input[type="text"], 
+form input[type="number"], 
+form textarea, 
+form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #007bff; /* Borde azul */
+    border-radius: 6px; /* Bordes redondeados */
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus, 
+form input[type="number"]:focus, 
+form textarea:focus, 
+form select:focus {
+    border-color: #0056b3; /* Azul más oscuro cuando está en foco */
+    outline: none; /* Eliminar borde predeterminado */
+}
+
+/* Estilo para el botón */
+form button[type="submit"] {
+    background-color: #007bff; /* Azul principal */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+}
+
+/* Estilo para el textarea específico */
+form textarea {
+    height: 150px;
+    resize: vertical; /* Permite redimensionar el textarea solo verticalmente */
+}
+
+/* Espaciado para mejorar la legibilidad */
+form p {
+    margin-bottom: 20px;
+}
+
+.content {
+    flex-grow: 1; /* Esto asegura que el contenido crezca y ocupe el espacio restante */
+    padding-bottom: 60px; /* Agrega espacio adicional en la parte inferior */
+    max-width: 1200px; /* Limita el ancho del contenedor para que no ocupe toda la pantalla */
+    margin: 0 auto; /* Centra el contenido en la pantalla */
+}

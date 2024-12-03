@@ -1,13 +1,18 @@
 {% extends "base.html" %}
 
 {% block title %}Agregar Producto{% endblock %}
-
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/users/create_service.css' %}">
+{% endblock %}
 {% block content %}
+<div class="content">
+    <h1>Registro del Producto</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Agregar Producto</button>
+        <a href="{% url 'users:empresa_home' %}" class="crear-btn">Cancelar</a>
     </form>
-    <a href="{% url 'users:empresa_home' %}">Cancelar</a>
-
+</div>
 {% endblock %}

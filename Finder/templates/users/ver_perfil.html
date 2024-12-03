@@ -4,26 +4,31 @@
 
 {% block style %}
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/users/perfil_usuario.css' %}">
 {% endblock %}
 
 {% block content %}
-    <h1>Perfil de {{ user.username }}</h1>
-    
-    <p><strong>Nombre de Usuario:</strong> {{ user.username }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
-    <p><strong>Rol:</strong> {{ user.role }}</p>
+    <div class="perfil-container">
+        <h1>Perfil de {{ user.username }}</h1>
+        
+        <div class="perfil-info">
+            <p><strong>Nombre de Usuario:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Rol:</strong> {{ user.role }}</p>
+        </div>
 
-    {% if worker_profile %}
-        <h3>Información del Trabajador</h3>
-        <p><strong>Profesión:</strong> {{ worker_profile.profession }}</p>
-        <p><strong>Biografía:</strong> {{ worker_profile.bio }}</p>
-        {% if worker_profile.gallery %}
-            <img src="{{ worker_profile.gallery.url }}" alt="Galería del trabajador" />
+        {% if worker_profile %}
+        <div class="worker-profile">
+            <h3>Información del Trabajador</h3>
+            <p><strong>Profesión:</strong> {{ worker_profile.profession }}</p>
+            <p><strong>Biografía:</strong> {{ worker_profile.bio }}</p>
+            {% if worker_profile.gallery %}
+                <img src="{{ worker_profile.gallery.url }}" alt="Galería del trabajador" class="worker-image" />
+            {% endif %}
+            <p><strong>Calificación:</strong> {{ worker_profile.rating }}</p>
+        </div>
+        {% else %}
+            <p>No se ha configurado un perfil de trabajador para este usuario.</p>
         {% endif %}
-        <p><strong>Calificación:</strong> {{ worker_profile.rating }}</p>
-    {% else %}
-        <p>No se ha configurado un perfil de trabajador para este usuario.</p>
-    {% endif %}
-    <a href="{% url 'users:client_home' %}">Regresar</a
-
+    </div>
 {% endblock %}

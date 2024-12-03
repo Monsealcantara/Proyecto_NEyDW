@@ -50,7 +50,7 @@
           </td>
           <td>
             {% if quotation.review_status == 'pending' %}
-              <a href="{% url 'jobs:leave_review' quotation.pk %}">Dejar reseña</a>
+              <a href="{% url 'jobs:leave_review' quotation.pk %}" class="crear-btn">Dejar reseña</a>
             {% elif quotation.review_status == 'reviewed' %}
               <div>
                 <span>Reseña dejada:</span>
