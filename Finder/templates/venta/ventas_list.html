@@ -1,18 +1,25 @@
 {% extends "base.html" %}
-
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/venta/ventas_list.css' %}">
+{% endblock %}
 {% block title %}Productos Disponibles{% endblock %}
 
 {% block content %}
-
+<div class="container">
     <h1>Mis Ventas</h1>
     {% for venta in ventas %}
         <h2>Venta ID: {{ venta.id }} - Fecha: {{ venta.fecha_venta }}</h2>
         <ul>
             {% for item in venta.items.all %}
-                <li>{{ item.producto.name }} - Cantidad: {{ item.cantidad }} - Precio: {{ item.precio }}</li>
+                <li>
+                    <span>{{ item.producto.name }}</span> 
+                    - Cantidad: {{ item.cantidad }} 
+                    - Precio: ${{ item.precio }}
+                </li>
             {% endfor %}
         </ul>
     {% endfor %}
     <a href="{% url 'users:empresa_home' %}">Regresar</a>
-
+</div>
 {% endblock %}

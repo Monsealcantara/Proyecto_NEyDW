@@ -1,10 +1,15 @@
 {% extends "base.html" %}
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/venta/compra_exitosa.css' %}">
+{% endblock %}
 
 {% block title %}Productos Disponibles{% endblock %}
 
 {% block content %}
-<h1>¡Compra Realizada con Éxito!</h1>
-<p>Tu compra ha sido procesada exitosamente.</p>
-<a href="{% url 'carrito:ver_carrito'%}">Regresar</a>
-
+<div class="container">
+    <h1>¡Compra Realizada con Éxito!</h1>
+    <p>Tu compra ha sido procesada exitosamente.</p>
+    <a href="{% url 'carrito:ver_carrito' %}">Regresar</a>
+</div>
 {% endblock %}

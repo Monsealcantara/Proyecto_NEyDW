@@ -30,7 +30,7 @@
 
                      {% elif user.role == 'empresa' %}
                      <li><a href="{% url 'users:empresa_home' %}">Home</a></li>
-                     <li><a>Ventas</a></li>
+                     <li><a href="{% url 'venta:ventas_list'%}">Ventas</a></li>
                      {% endif %}
                     <li><a href="{% url 'chat:chat_list' %}">Chat</a></li>
                     <li><a href="{% url 'notifications:notification_list' %}">Notificaciones</a></li>

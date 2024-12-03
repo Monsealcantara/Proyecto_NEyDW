@@ -1,16 +1,30 @@
 {% extends "base.html" %}
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/venta/compras_lista.css' %}">
+{% endblock %}
 
 {% block title %}Mis Compras{% endblock %}
 
 {% block content %}
-<h1>Mis Compras</h1>
+<div class="container">
+    <h1>Mis Compras</h1>
     {% for venta in ventas %}
-        <ul>Venta ID: {{ venta.id }} - Fecha: {{ venta.fecha_venta }} - Total: ${{ venta.total }}</ul>
+        <ul class="venta-info">
+            <li>Venta ID: {{ venta.id }}</li>
+            <li>Fecha: {{ venta.fecha_venta }}</li>
+            <li>Total: ${{ venta.total }}</li>
+        </ul>
         <ul>
             {% for item in venta.items.all %}
-                <li>{{ item.producto.name }} - Cantidad: {{ item.cantidad }} - Precio: ${{ item.precio }}</li>
+                <li>
+                    <span>{{ item.producto.name }}</span> 
+                    - Cantidad: {{ item.cantidad }} 
+                    - Precio: ${{ item.precio }}
+                </li>
             {% endfor %}
         </ul>
     {% endfor %}
     <a href="{% url 'users:worker_home' %}">Regresar</a>
+</div>
 {% endblock %}
